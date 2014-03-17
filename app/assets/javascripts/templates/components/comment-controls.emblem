@@ -1,10 +1,10 @@
 .fr
   if isCreatingComment
     a click="cancelComment" classNames="epsilon"
-      | Cancel Comment
+      | Cancel
   else
     a click="createComment" classNames="epsilon"
-      | Create Comment
+      | Reply
 .clearfix.mb
 
 if isCreatingComment
@@ -21,6 +21,13 @@ if isCreatingComment
 
       button.btn.positive-background click="submitComment" Submit
 
-.comments
-  each child in parentEvent.children
-    feed-event event=child
+
+a click="toggleComments" classNames="epsilon"
+  if isExpanded
+    | Collapse
+  else
+    | Expand
+if isExpanded
+  .comments
+    each event in events
+      feed-event event=event

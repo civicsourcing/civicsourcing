@@ -3,6 +3,6 @@ class FeedSerializer < ActiveModel::Serializer
 
   attributes :id
 
-  has_many :event_joins, serializer: EventJoinSerializer
+  has_many :events, serializer: EventSerializer
 
 end

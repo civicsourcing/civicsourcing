@@ -1,3 +1,5 @@
+Ember.Select content=sortMethods selection=currentSortMethod optionValuePath="content.id" optionLabelPath="content.name"
+
 .fr
   if isCreatingPost
     a click="cancelPost" classNames="epsilon"
@@ -26,5 +28,5 @@ if isCreatingPost
       button.btn.positive-background click="submitPost" Submit
 
 .feed
-  each eventJoin in feed.eventJoins
-    feed-event event=eventJoin.event
+  each event in events
+    feed-event event=event currentSortMethod=currentSortMethod

@@ -4,4 +4,4 @@
   .flag__body
     if eventType
       = view eventType event=event
-    comment-controls parentEvent=event
+    comment-controls parentEvent=event currentSortMethod=currentSortMethod

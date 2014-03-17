@@ -16,7 +16,6 @@ CivicSourcing::Application.routes.draw do
       resources :comments, constraints: FormatTest.new(:json)
       resources :communities, constraints: FormatTest.new(:json)
       resources :events, constraints: FormatTest.new(:json)
-      resources :event_joins, constraints: FormatTest.new(:json)
       resources :feeds, constraints: FormatTest.new(:json)
       resources :memberships, constraints: FormatTest.new(:json)
       resources :posts, constraints: FormatTest.new(:json)

@@ -5,17 +5,17 @@ CivicSourcing.Event = CivicSourcing.Amorphous.extend
     polymorphic: true, inverse: 'parentEvent'
   childEventable: DS.hasMany 'amorphous',
     polymorphic: true
-  eventJoins: DS.hasMany 'event.join',
-    async: true
+
+  feeds: DS.hasMany 'feed'
 
   ancestor: DS.belongsTo 'event',
     inverse: 'descendants'
   descendants: DS.belongsTo 'event',
-    inverse: 'ancestor'
+    inverse: 'ancestor', async: true
   parent: DS.belongsTo 'event',
     inverse: 'children'
   children: DS.hasMany 'event',
-    inverse: 'parent'
+    inverse: 'parent', async: true
 
   voteFor: DS.attr()
 
@@ -24,3 +24,5 @@ CivicSourcing.Event = CivicSourcing.Amorphous.extend
   votesAgainst: DS.attr()
   controversy: DS.attr()
   popularity: DS.attr()
+  updatedAt: DS.attr()
+  childrenCount: DS.attr()
