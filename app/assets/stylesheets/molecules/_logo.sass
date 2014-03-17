@@ -1,0 +1,26 @@
+.logo, .logo--sm
+  background-image: url(image_path('logo-sm.png'))
+
+.logo-box, .logo-box--sm
+  height: 54px
+  width: 83px
+  bottom: 0
+  right: 10px
+
+@media (min-width: 700px)
+  .logo
+    background-image: url(image_path('logo.png'))
+
+  .logo-box
+    right: 15px
+    height: 81px
+    width: 125px
+
+@media (min-width: 940px)
+  .logo
+    background-image: url(image_path('logo-lg.png'))
+
+  .logo-box
+    right: 30px
+    height: 108px
+    width: 166px

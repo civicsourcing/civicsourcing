@@ -1,0 +1,6 @@
+label for="file_upload"
+  | Image:
+.file-upload.b.va-middle
+  img#sample_image
+  Em.TextField valueBinding="upload" type="hidden"
+  input#file_upload type="file" name="upload[file]"

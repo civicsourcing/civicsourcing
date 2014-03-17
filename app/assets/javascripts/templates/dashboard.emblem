@@ -1,0 +1,28 @@
+aside.leaderboard.column-left.fixed-aside
+  h1.gamma
+    | Leaderboard
+  .b.b--no-b
+    | Shows my community rating:
+  .b.b--no-b.aside-background
+    | Community Scores
+  .b.aside-background
+    | Community
+
+section
+  nav.nav.nav--dashboard.full-width
+    link-to 'dashboard.feed' classNames="nav--dashboard__btn muted-background delta"
+      | Community Feed
+    link-to 'dashboard.initiatives' classNames="nav--dashboard__btn muted-background delta"
+      | My Initiatives
+    link-to 'dashboard.communities' classNames="nav--dashboard__btn muted-background delta"
+      | My Communities
+    link-to 'dashboard.reputation' classNames="nav--dashboard__btn muted-background nav--dashboard__last-btn delta"
+      | Learn & Earn
+  section.b.full-width
+    == outlet
+
+aside.awards.column-right.fixed-aside
+  h1.gamma
+    | Recognition and Rewards
+  .b
+    | Awards

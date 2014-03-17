@@ -1,0 +1,7 @@
+.flag.flag--top.flag--small.mb
+  .flag__img
+    vote-controls event=event
+  .flag__body
+    if eventType
+      = view eventType event=event
+    comment-controls parentEvent=event

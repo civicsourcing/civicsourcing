@@ -1,0 +1,15 @@
+.autocomplete
+  margin: 0
+  width: 200px
+  list-style-type: none
+  border: thin solid $cs-muted-border-color
+  li
+    @include opacity(50)
+    @extend .p-s
+    margin: 0
+    border-bottom: thin solid $cs-muted-border-color
+    cursor: pointer
+  li:last-child
+    border: 0
+  li:hover
+    @include opacity(100)

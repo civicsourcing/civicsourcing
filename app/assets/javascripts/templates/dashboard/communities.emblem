@@ -1,0 +1,10 @@
+.inner-dashboard
+  .fl
+    community-autocomplete
+  .fr
+    link-to "dashboard.communities" classNames="mr epsilon"
+      | Communities List 
+    link-to "dashboard.communities.new" classNames="epsilon"
+      | New Community 
+  .clearfix.mb
+  == outlet

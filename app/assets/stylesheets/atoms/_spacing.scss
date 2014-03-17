@@ -1,0 +1,190 @@
+/*-t-t-t-t-t-t-t-t-t-t-t-t-t-t-t-t-t-t*\
+#SPACING
+\*-t-t-t-t-t-t-t-t-t-t-t-t-t-t-t-t-t-t*/
+
+/**
+* Margin and padding helper classes. Use these to tweak layout on a micro
+* level.
+*
+* `.(m|p)(t|r|b|l|e|s)(-|+|0) {}` = margin/padding top/right/bottom/left/ends/sides less/more/none
+*/
+
+// Predefine the variables below in order to alter and enable specific features.
+$inuit-margin:                  $inuit-base-spacing-unit !default;
+$inuit-padding:                 $inuit-base-spacing-unit !default;
+
+
+
+
+
+
+/**
+ * Margin helper classes.
+ *
+ * Add margins.
+ */
+
+.#{$inuit-namespace}m       { margin:           $inuit-margin !important; }
+.#{$inuit-namespace}mt      { margin-top:       $inuit-margin !important; }
+.#{$inuit-namespace}mr      { margin-right:     $inuit-margin !important; }
+.#{$inuit-namespace}mb      { margin-bottom:    $inuit-margin !important; }
+.#{$inuit-namespace}ml      { margin-left:      $inuit-margin !important; }
+.#{$inuit-namespace}me      { margin-top:       $inuit-margin !important; margin-bottom:    $inuit-margin !important; }
+.#{$inuit-namespace}ms      { margin-right:     $inuit-margin !important; margin-left:      $inuit-margin !important; }
+
+
+
+/**
+ * Add tiny margins.
+ */
+
+.#{$inuit-namespace}m-t     { margin:           quarter($inuit-margin) !important; }
+.#{$inuit-namespace}mt-t    { margin-top:       quarter($inuit-margin) !important; }
+.#{$inuit-namespace}mr-t    { margin-right:     quarter($inuit-margin) !important; }
+.#{$inuit-namespace}mb-t    { margin-bottom:    quarter($inuit-margin) !important; }
+.#{$inuit-namespace}ml-t    { margin-left:      quarter($inuit-margin) !important; }
+.#{$inuit-namespace}me-t    { margin-top:       quarter($inuit-margin) !important; margin-bottom:   quarter($inuit-margin) !important; }
+.#{$inuit-namespace}ms-t    { margin-right:     quarter($inuit-margin) !important; margin-left:     quarter($inuit-margin) !important; }
+
+
+
+/**
+ * Add small margins.
+ */
+
+.#{$inuit-namespace}m-s     { margin:           halve($inuit-margin) !important; }
+.#{$inuit-namespace}mt-s    { margin-top:       halve($inuit-margin) !important; }
+.#{$inuit-namespace}mr-s    { margin-right:     halve($inuit-margin) !important; }
+.#{$inuit-namespace}mb-s    { margin-bottom:    halve($inuit-margin) !important; }
+.#{$inuit-namespace}ml-s    { margin-left:      halve($inuit-margin) !important; }
+.#{$inuit-namespace}me-s    { margin-top:       halve($inuit-margin) !important; margin-bottom: halve($inuit-margin) !important; }
+.#{$inuit-namespace}ms-s    { margin-right:     halve($inuit-margin) !important; margin-left:   halve($inuit-margin) !important; }
+
+
+
+/**
+ * Add large margins.
+ */
+
+.#{$inuit-namespace}m-l     { margin:           double($inuit-margin) !important; }
+.#{$inuit-namespace}mt-l    { margin-top:       double($inuit-margin) !important; }
+.#{$inuit-namespace}mr-l    { margin-right:     double($inuit-margin) !important; }
+.#{$inuit-namespace}mb-l    { margin-bottom:    double($inuit-margin) !important; }
+.#{$inuit-namespace}ml-l    { margin-left:      double($inuit-margin) !important; }
+.#{$inuit-namespace}me-l    { margin-top:       double($inuit-margin) !important; margin-bottom:    double($inuit-margin) !important; }
+.#{$inuit-namespace}ms-l    { margin-right:     double($inuit-margin) !important; margin-left:      double($inuit-margin) !important; }
+
+
+
+/**
+ * Add huge margins.
+ */
+
+.#{$inuit-namespace}m-h   { margin:           quadruple($inuit-margin) !important; }
+.#{$inuit-namespace}mt-h  { margin-top:       quadruple($inuit-margin) !important; }
+.#{$inuit-namespace}mr-h  { margin-right:     quadruple($inuit-margin) !important; }
+.#{$inuit-namespace}mb-h  { margin-bottom:    quadruple($inuit-margin) !important; }
+.#{$inuit-namespace}ml-h  { margin-left:      quadruple($inuit-margin) !important; }
+.#{$inuit-namespace}me-h  { margin-top:       quadruple($inuit-margin) !important; margin-bottom: quadruple($inuit-margin) !important; }
+.#{$inuit-namespace}ms-h  { margin-right:     quadruple($inuit-margin) !important; margin-left:   quadruple($inuit-margin) !important; }
+
+
+
+/**
+ * Remove margins.
+ */
+
+.#{$inuit-namespace}m0      { margin:           0 !important; }
+.#{$inuit-namespace}mt0     { margin-top:       0 !important; }
+.#{$inuit-namespace}mr0     { margin-right:     0 !important; }
+.#{$inuit-namespace}mb0     { margin-bottom:    0 !important; }
+.#{$inuit-namespace}ml0     { margin-left:      0 !important; }
+.#{$inuit-namespace}me0     { margin-top:       0 !important; margin-bottom:    0 !important; }
+.#{$inuit-namespace}ms0     { margin-right:     0 !important; margin-left:      0 !important; }
+
+
+
+/**
+ * Padding helper classes.
+ *
+ * Add paddings.
+ */
+
+.#{$inuit-namespace}p       { padding:          $inuit-padding !important; }
+.#{$inuit-namespace}pt      { padding-top:      $inuit-padding !important; }
+.#{$inuit-namespace}pr      { padding-right:    $inuit-padding !important; }
+.#{$inuit-namespace}pb      { padding-bottom:   $inuit-padding !important; }
+.#{$inuit-namespace}pl      { padding-left:     $inuit-padding !important; }
+.#{$inuit-namespace}pe      { padding-top:      $inuit-padding !important; padding-bottom:  $inuit-padding !important; }
+.#{$inuit-namespace}ps      { padding-right:    $inuit-padding !important; padding-left:    $inuit-padding !important; }
+
+
+
+/**
+ * Add tiny paddings.
+ */
+
+.#{$inuit-namespace}p-t     { padding:           quarter($inuit-padding) !important; }
+.#{$inuit-namespace}pt-t    { padding-top:       quarter($inuit-padding) !important; }
+.#{$inuit-namespace}pr-t    { padding-right:     quarter($inuit-padding) !important; }
+.#{$inuit-namespace}pb-t    { padding-bottom:    quarter($inuit-padding) !important; }
+.#{$inuit-namespace}pl-t    { padding-left:      quarter($inuit-padding) !important; }
+.#{$inuit-namespace}pe-t    { padding-top:       quarter($inuit-padding) !important; padding-bottom:    quarter($inuit-padding) !important; }
+.#{$inuit-namespace}ps-t    { padding-right:     quarter($inuit-padding) !important; padding-left:      quarter($inuit-padding) !important; }
+
+
+
+/**
+ * Add small paddings.
+ */
+
+.#{$inuit-namespace}p-s     { padding:           halve($inuit-padding) !important; }
+.#{$inuit-namespace}pt-s    { padding-top:       halve($inuit-padding) !important; }
+.#{$inuit-namespace}pr-s    { padding-right:     halve($inuit-padding) !important; }
+.#{$inuit-namespace}pb-s    { padding-bottom:    halve($inuit-padding) !important; }
+.#{$inuit-namespace}pl-s    { padding-left:      halve($inuit-padding) !important; }
+.#{$inuit-namespace}pe-s    { padding-top:       halve($inuit-padding) !important; padding-bottom:  halve($inuit-padding) !important; }
+.#{$inuit-namespace}ps-s    { padding-right:     halve($inuit-padding) !important; padding-left:    halve($inuit-padding) !important; }
+
+
+
+/**
+ * Add large paddings.
+ */
+
+.#{$inuit-namespace}p-l     { padding:           double($inuit-padding) !important; }
+.#{$inuit-namespace}pt-l    { padding-top:       double($inuit-padding) !important; }
+.#{$inuit-namespace}pr-l    { padding-right:     double($inuit-padding) !important; }
+.#{$inuit-namespace}pb-l    { padding-bottom:    double($inuit-padding) !important; }
+.#{$inuit-namespace}pl-l    { padding-left:      double($inuit-padding) !important; }
+.#{$inuit-namespace}pe-l    { padding-top:       double($inuit-padding) !important; padding-bottom: double($inuit-padding) !important; }
+.#{$inuit-namespace}ps-l    { padding-right:     double($inuit-padding) !important; padding-left:   double($inuit-padding) !important; }
+
+
+
+/**
+ * Add huge paddings.
+ */
+
+.#{$inuit-namespace}p-h   { padding:           quadruple($inuit-padding) !important; }
+.#{$inuit-namespace}pt-h  { padding-top:       quadruple($inuit-padding) !important; }
+.#{$inuit-namespace}pr-h  { padding-right:     quadruple($inuit-padding) !important; }
+.#{$inuit-namespace}pb-h  { padding-bottom:    quadruple($inuit-padding) !important; }
+.#{$inuit-namespace}pl-h  { padding-left:      quadruple($inuit-padding) !important; }
+.#{$inuit-namespace}pe-h  { padding-top:       quadruple($inuit-padding) !important; padding-bottom:  quadruple($inuit-padding) !important; }
+.#{$inuit-namespace}ps-h  { padding-right:     quadruple($inuit-padding) !important; padding-left:    quadruple($inuit-padding) !important; }
+
+
+
+/**
+ * Remove paddings.
+ */
+
+.#{$inuit-namespace}p0      { padding:          0 !important; }
+.#{$inuit-namespace}pt0     { padding-top:      0 !important; }
+.#{$inuit-namespace}pr0     { padding-right:    0 !important; }
+.#{$inuit-namespace}pb0     { padding-bottom:   0 !important; }
+.#{$inuit-namespace}pl0     { padding-left:     0 !important; }
+.#{$inuit-namespace}pe0     { padding-top:      0 !important; padding-bottom:   0 !important; }
+.#{$inuit-namespace}ps0     { padding-right:    0 !important; padding-left:     0 !important; }
+

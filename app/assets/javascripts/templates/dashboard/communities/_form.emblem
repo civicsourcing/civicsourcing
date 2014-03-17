@@ -1,0 +1,20 @@
+form
+
+  if !isValid
+    | Invalid
+
+  ul.form-fields
+    li
+      label for="name"
+        | Community Name:
+      Ember.TextField value=name id="name"
+
+    li
+      label for="private"
+        | Private?
+      Ember.Checkbox value=private id="private"
+
+    li
+      CivicSourcing.FileFieldView
+
+    button.btn.positive-background click="submit" Submit

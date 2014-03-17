@@ -1,0 +1,6 @@
+form
+  Ember.TextField valueBinding="username" placeholder='Username'
+  Ember.TextField valueBinding="email" placeholder='Email'
+  Ember.TextField valueBinding="password" placeholder='Password' type="password"
+  Ember.TextField valueBinding="passwordConfirmation" placeholder='Password Confirmation' type="password"
+  button click="submit" Register

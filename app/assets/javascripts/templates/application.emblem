@@ -1,0 +1,47 @@
+header.header.header-box.fw.fixed
+  .one-fifth.ib.relative
+    link-to 'home' classNames="fw ib"
+      .logo.logo-box.absolute.nr
+  .four-fifths.ib.relative.va-text-bottom
+
+    nav
+      ul.nav.nav--header.highlight-background
+        li.c.light-text.va-top
+          link-to 'static.how-it-works' classNames="link__light"
+            | Learn how CivicSourcin works
+        li.c.light-text.va-top
+          link-to 'register' classNames="link__light"
+            | Start here and voice what matters to you
+        li.c.light-text.va-top
+          link-to 'dashboard.feed' classNames="link__light"
+            | Collaborate on Initiatives to Improve Your Community
+
+  CivicSourcing.LoginIOView
+
+.main.relative.column-center
+  == outlet
+
+footer.footer.fw.fixed
+  .five-sixths.fr.relative
+
+    nav
+      ul.nav.nav--footer.lowlight-background
+        li.light-text
+          link-to 'home' classNames="link__light"
+            | Home
+        li.light-text
+          link-to 'static.how-it-works' classNames="link__light"
+            | How it Works
+        li.light-text
+          link-to 'register' classNames="link__light"
+            | Start
+        li.light-text
+          link-to 'dashboard.feed' classNames="link__light"
+            | Collaborate
+        li.light-text
+          link-to 'static.about' classNames="link__light"
+            | About Us
+        li.light-text Blog
+        li.light-text
+          link-to 'static.contact' classNames="link__light"
+            | Contact Us

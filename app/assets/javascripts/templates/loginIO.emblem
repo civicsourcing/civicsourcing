@@ -1,0 +1,5 @@
+if session.isAuthenticated
+  a.epsilon click="invalidateSession" Logout
+else
+  a.epsilon click="authenticateSession" Login
+  link-to "register" classNames="epsilon ml" | Register

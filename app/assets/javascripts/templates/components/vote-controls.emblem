@@ -1,0 +1,14 @@
+a click="upvote"
+  .upvote
+    if currentUpvote
+      | Unvote
+    else
+      | Up
+a click="downvote"
+  .downvote
+    if currentDownvote
+      | Unvote
+    else
+      | Down
+.score
+  = event.votesSum

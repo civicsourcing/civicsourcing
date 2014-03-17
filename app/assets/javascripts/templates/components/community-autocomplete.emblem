@@ -1,0 +1,7 @@
+Ember.TextField valueBinding="searchInput" placeholder="Search Communities"
+if communities
+  ul.autocomplete
+    each community in communities
+      li click="clear"
+        link-to 'dashboard.communities.community' community 
+          community.name

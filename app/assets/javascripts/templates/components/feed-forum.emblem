@@ -1,0 +1,30 @@
+.fr
+  if isCreatingPost
+    a click="cancelPost" classNames="epsilon"
+      | Cancel Post
+  else
+    a click="createPost" classNames="epsilon"
+      | Create Post
+.clearfix.mb
+
+if isCreatingPost
+  form.mb
+
+    ul.form-fields
+      li
+        label for="title"
+          | Post Title:
+        Ember.TextField value=newPost.title id="title"
+
+      li
+        label for="body"
+          | Body
+        Ember.TextArea value=newPost.body id="body"
+
+      Ember.TextField type="hidden" value=newPost.feed
+
+      button.btn.positive-background click="submitPost" Submit
+
+.feed
+  each eventJoin in feed.eventJoins
+    feed-event event=eventJoin.event

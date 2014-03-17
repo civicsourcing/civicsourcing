@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: civic_sourcing_development
+  pool: 5
+  username: timothythehuman
+  password: d@t@b@se
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: civic_sourcing_test
+  pool: 5
+  username: timothythehuman
+  password: d@t@b@se
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: civic_sourcing_production
+  pool: 5
+  username: timothythehuman
+  password: mysecretpasswordofmightandglory

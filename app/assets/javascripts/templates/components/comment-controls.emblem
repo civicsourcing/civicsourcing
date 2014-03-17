@@ -1,0 +1,26 @@
+.fr
+  if isCreatingComment
+    a click="cancelComment" classNames="epsilon"
+      | Cancel Comment
+  else
+    a click="createComment" classNames="epsilon"
+      | Create Comment
+.clearfix.mb
+
+if isCreatingComment
+  form.mb
+
+    ul.form-fields
+
+      li
+        label for="body"
+          | Body
+        Ember.TextArea value=newComment.body id="body"
+
+      Ember.TextField type="hidden" value=newComment.parentEvent
+
+      button.btn.positive-background click="submitComment" Submit
+
+.comments
+  each child in parentEvent.children
+    feed-event event=child

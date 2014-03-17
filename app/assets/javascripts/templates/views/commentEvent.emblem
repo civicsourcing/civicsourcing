@@ -1,0 +1,4 @@
+section.mt-s
+  p #{ event.creator.username }
+  section.mt
+    p = comment.body
