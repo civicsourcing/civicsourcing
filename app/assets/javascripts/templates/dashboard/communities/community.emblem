@@ -1,5 +1,5 @@
 .flag.flag--top
-  img.flag__img src=upload.file.file.url
+  img.flag__img src=logoUrl
   .flag__body
     h1.mb == name
     if userIsMember

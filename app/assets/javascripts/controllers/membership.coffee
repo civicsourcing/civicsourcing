@@ -1,4 +1,4 @@
-CivicSourcing.DashboardCommunitiesMembershipController = Ember.ObjectController.extend(
+CivicSourcing.MembershipController = Ember.ObjectController.extend(
   
   membershipSizeMinusUser: (->
     @get("group.membershipSize") - 1

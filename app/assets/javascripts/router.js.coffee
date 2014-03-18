@@ -10,7 +10,9 @@ CivicSourcing.Router.map ()->
     @route 'contact', path: 'contact'
   @resource 'dashboard', ->
     @resource 'dashboard.feed', path: 'feed'
-    @resource 'dashboard.initiatives', path: 'initiatives'
+    @resource 'dashboard.initiatives', path: 'initiatives', ->
+      @route 'new'
+      @resource 'dashboard.initiatives.initiative', path: ':initiative_id'
     @resource 'dashboard.communities', path: 'communities', ->
       @route 'new'
       @resource 'dashboard.communities.community', path: ':community_id'

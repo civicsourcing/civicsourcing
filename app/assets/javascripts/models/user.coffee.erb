@@ -1,0 +1,38 @@
+CivicSourcing.User = CivicSourcing.Amorphous.extend(
+  CivicSourcing.FeedableMixin
+
+  aggregateFollows: DS.hasMany "event",
+    inverse: 'aggregator', async: true
+
+  username: DS.attr()
+  email: DS.attr()
+  password: DS.attr()
+  passwordConfirmation: DS.attr()
+  slug: DS.attr()
+
+  gender: DS.attr()
+
+  upload: DS.belongsTo 'upload'
+
+  avatarUrl: (->
+    uploadUrl = @get("upload.file.file.url")
+    if uploadUrl?
+      uploadUrl
+    else
+      if @get("gender") == "male"
+        "<%= asset_path('default-avatar-male.jpg') %>"
+      else
+        "<%= asset_path('default-avatar-female.jpg') %>"
+  ).property("upload.file.file.url")
+
+  avatarThumbUrl: (->
+    uploadUrl = @get("upload.file.file.thumb.url")
+    if uploadUrl?
+      uploadUrl
+    else
+      if @get("gender") == "male"
+        "<%= asset_path('default-avatar-male-thumb.jpg') %>"
+      else
+        "<%= asset_path('default-avatar-female-thumb.jpg') %>"
+  ).property("upload.file.file.thumb.url")
+)

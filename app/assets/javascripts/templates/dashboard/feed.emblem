@@ -1,0 +1,6 @@
+Ember.Select content=sortMethods selection=currentSortMethod optionValuePath="content.id" optionLabelPath="content.name"
+
+.inner-dashboard
+  .feed
+    each event in controller
+      feed-event event=event currentSortMethod=currentSortMethod

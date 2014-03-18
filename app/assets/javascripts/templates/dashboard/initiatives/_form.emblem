@@ -1,0 +1,24 @@
+form
+
+  if !isValid
+    | Invalid
+
+  ul.form-fields
+    li
+      label for="name"
+        | Initiative Name:
+      Ember.TextField value=name id="name"
+
+    li
+      label for="community"
+        | Community:
+      span.input-width
+        Ember.TextField type="hidden" valueBinding="community"
+        community-set-autocomplete
+
+    li
+      label for="description"
+        | Description:
+      Ember.TextArea value=description id="description"
+
+    button.btn.positive-background click="submit" Submit

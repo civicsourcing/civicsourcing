@@ -1,0 +1,19 @@
+.flag.flag--top
+  link-to "dashboard.communities.community" community
+    img.flag__img src=community.logoUrl
+  .flag__body
+    h1 == name
+    .epsilon.mb
+      span.mr-t An initiative of
+      link-to "dashboard.communities.community" community
+        community.name
+    p == description
+    if userIsMember
+      button.btn.negative-background click="leave"
+        | Leave
+    else
+      button.btn.positive-background click="join"
+        | Join
+
+if userIsMember
+  feed-forum feed=workroom.feed

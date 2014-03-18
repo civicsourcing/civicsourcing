@@ -5,8 +5,11 @@ CivicSourcing.Event = CivicSourcing.Amorphous.extend
     polymorphic: true, inverse: 'parentEvent'
   childEventable: DS.hasMany 'amorphous',
     polymorphic: true
+  aggregator: DS.belongsTo 'user',
+    inverse: 'aggregateFollows'
 
-  feeds: DS.hasMany 'feed'
+  feeds: DS.hasMany 'feed',
+    inverse: 'events', async: true
 
   ancestor: DS.belongsTo 'event',
     inverse: 'descendants'

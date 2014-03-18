@@ -1,5 +1,18 @@
 form
-  Ember.TextField id="identification" valueBinding="identification" placeholder='Email'
-  Ember.TextField id="password" valueBinding="password" placeholder='Password' type="password"
-  Ember.Checkbox id="remember_me" checkedBinding="remember_me"
-  button click="authenticate" Login
+  ul.form-fields
+    li
+      label for="identification"
+        | Email:
+      Ember.TextField id="identification" valueBinding="identification"
+
+    li
+      label for="password"
+        | Password:
+      Ember.TextField id="password" valueBinding="password" type="password"
+
+    li
+      label for="remember_me"
+        | Remember Me:
+      Ember.Checkbox id="remember_me" checkedBinding="remember_me"
+
+    button click="authenticate" Login

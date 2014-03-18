@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315180315) do
+ActiveRecord::Schema.define(version: 20140317213247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,19 @@ ActiveRecord::Schema.define(version: 20140315180315) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "initiatives", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+    t.integer  "community_id"
+    t.integer  "upload_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "initiatives", ["community_id"], name: "index_initiatives_on_community_id", using: :btree
+  add_index "initiatives", ["slug"], name: "index_initiatives_on_slug", unique: true, using: :btree
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -190,14 +203,15 @@ ActiveRecord::Schema.define(version: 20140315180315) do
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "slug"
+    t.string   "gender",                 default: "male", null: false
     t.integer  "upload_id"
     t.string   "authentication_token"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",     null: false
+    t.string   "encrypted_password",     default: "",     null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,      null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -206,7 +220,7 @@ ActiveRecord::Schema.define(version: 20140315180315) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,      null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
@@ -219,5 +233,13 @@ ActiveRecord::Schema.define(version: 20140315180315) do
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+
+  create_table "workrooms", force: true do |t|
+    t.integer  "initiative_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "workrooms", ["initiative_id"], name: "index_workrooms_on_initiative_id", using: :btree
 
 end

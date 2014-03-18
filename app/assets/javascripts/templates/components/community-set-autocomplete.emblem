@@ -1,0 +1,7 @@
+span
+  Ember.TextField valueBinding="searchInput" id="community" autocomplete="off"
+  if communities
+    ul.autocomplete.input-width
+      each community in communities
+        li{action setCommunity community on="click" target='view'}
+          community.name

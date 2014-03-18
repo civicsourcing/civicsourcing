@@ -6,7 +6,7 @@ module Api
       def index
         @communities = Community.where(QueryParams.new(Community, params).build)
 
-        render json: @communities
+        render json: @communities, each_serializer: CommunitySerializer
       end
 
       # GET /communities/1
@@ -14,7 +14,7 @@ module Api
       def show
         @community = Community.friendly.find(params[:id])
 
-        render json: @community
+        render json: @community, serializer: CommunitySerializer
       end
 
       # POST /communities
@@ -24,6 +24,7 @@ module Api
 
         if @community.save
           @community.add_member(current_user)
+          current_user.follow(@community.feed)
           render json: @community, status: :created,
             location: api_v1_community_path(@community)
         else

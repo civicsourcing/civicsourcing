@@ -3,6 +3,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.string :username
       t.string :slug
+      t.string :gender, null: false, default: "male"
       
       t.integer :upload_id
 

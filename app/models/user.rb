@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable 
 
   acts_as_member
+  acts_as_follower
 
   flexible_feeds
 
@@ -14,6 +15,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: { case_sensitive: false },
     length: { in: 3..30 }
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
+  validates :gender, presence: true, inclusion: { in: ["male", "female"] }
 
   before_save :ensure_authentication_token
  

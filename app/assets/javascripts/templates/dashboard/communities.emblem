@@ -1,6 +1,6 @@
 .inner-dashboard
   .fl
-    community-autocomplete
+    community-search-autocomplete
   .fr
     link-to "dashboard.communities" classNames="mr epsilon"
       | Communities List 

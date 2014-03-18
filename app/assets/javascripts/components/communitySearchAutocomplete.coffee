@@ -1,4 +1,4 @@
-CivicSourcing.CommunityAutocompleteComponent = Em.Component.extend
+CivicSourcing.CommunitySearchAutocompleteComponent = Em.Component.extend
 
   searchInput: null
 

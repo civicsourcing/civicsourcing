@@ -1,0 +1,22 @@
+CivicSourcing.Community = CivicSourcing.Amorphous.extend(
+  CivicSourcing.FeedableMixin
+
+  initiatives: DS.hasMany "initiative",
+    async: true
+
+  name: DS.attr()
+  slug: DS.attr()
+  private: DS.attr()
+
+  membershipId: DS.attr()
+  
+  completedInitiatives: DS.attr()
+  membershipSize: DS.attr()
+
+  upload: DS.belongsTo 'upload'
+
+  logoUrl: (->
+    uploadUrl = @get("upload.file.file.url")
+    if uploadUrl? then uploadUrl else "<%= asset_path('default-logo-community.png') %>"
+  ).property("upload.file.file.url")
+)

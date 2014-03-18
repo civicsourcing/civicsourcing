@@ -1,6 +1,6 @@
-Ember.TextField valueBinding="searchInput" placeholder="Search Communities"
+Ember.TextField valueBinding="searchInput" placeholder="Search Communities" autocomplete="off"
 if communities
-  ul.autocomplete
+  ul.autocomplete.input-width
     each community in communities
       li click="clear"
         link-to 'dashboard.communities.community' community 

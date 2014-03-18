@@ -21,7 +21,7 @@ module Api
       private
       def user_params
         params.require(:user).permit(:email, :password, :password_confirmation,
-          :username, :upload_id)
+          :username, :upload_id, :gender)
       end
      
     end

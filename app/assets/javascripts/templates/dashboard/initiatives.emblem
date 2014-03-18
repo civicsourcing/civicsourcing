@@ -1,0 +1,8 @@
+.inner-dashboard
+  .fr
+    link-to "dashboard.initiatives" classNames="mr epsilon"
+      | Initiatives List 
+    link-to "dashboard.initiatives.new" classNames="epsilon"
+      | New Initiative 
+  .clearfix.mb
+  == outlet

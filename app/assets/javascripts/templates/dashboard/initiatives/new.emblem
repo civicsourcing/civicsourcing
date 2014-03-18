@@ -1,0 +1,3 @@
+h1.bb Start New Initiative
+
+partial "dashboard/initiatives/form"

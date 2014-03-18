@@ -1,0 +1,6 @@
+section.mt-s
+  h1.bold.gamma
+    span.mr-s Initiative:
+    link-to "dashboard.initiatives.initiative" initiative
+      initiative.name
+  p Created by #{ event.creator.username }

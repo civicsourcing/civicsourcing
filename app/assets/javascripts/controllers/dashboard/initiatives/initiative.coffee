@@ -1,0 +1,3 @@
+CivicSourcing.DashboardInitiativesInitiativeController = Ember.ObjectController.extend(
+  CivicSourcing.GroupMembershipControllerMixin
+)

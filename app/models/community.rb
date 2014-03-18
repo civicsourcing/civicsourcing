@@ -8,6 +8,8 @@ class Community < ActiveRecord::Base
 
   belongs_to :upload
 
+  has_many :initiatives
+
   validates :name, presence: true, length: { in: 3..80 }
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
 end

@@ -1,4 +1,6 @@
-Ember.Select content=sortMethods selection=currentSortMethod optionValuePath="content.id" optionLabelPath="content.name"
+.fr
+  Ember.Select content=sortMethods selection=currentSortMethod optionValuePath="content.id" optionLabelPath="content.name"
+.clearfix
 
 .fr
   if isCreatingPost

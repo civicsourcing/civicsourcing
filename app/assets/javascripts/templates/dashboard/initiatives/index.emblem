@@ -1,0 +1,13 @@
+each membership in controller
+  section.list-item-initiative.mb.mr.p.b.b--muted
+    h1.gamma
+      link-to 'dashboard.initiatives.initiative' membership.group
+        == membership.group.name
+    span.fl.epsilon.highlight-text
+      | Description
+    span.fr.epsilon.highlight-text
+      link-to 'dashboard.communities.community' membership.group.community
+        == membership.group.community.name
+    .clearfix.mb-s
+    p = membership.group.description
+

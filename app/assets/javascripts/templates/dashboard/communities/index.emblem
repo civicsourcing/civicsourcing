@@ -1,5 +1,5 @@
 each membership in controller
-  section.list-item--community.mt.pb.bb.b--muted
+  section.mt.pb.bb.b--muted
     span.bold.fl
       link-to 'dashboard.communities.community' membership.group
         == membership.group.name
@@ -7,7 +7,7 @@ each membership in controller
       | Engagement Rank
     .clearfix.mb-s
     .flag.flag--top
-      img.flag__img src=membership.group.upload.file.file.url
+      img.flag__img src=membership.group.logoUrl
       .flag__body
         p You joined the <span class="underline">#{ membership.group.name }</span> community in <span class="underline">#{ getYear membership.createdAt }</span>. Through CivicSourcing, you and <span class="underline">#{ membership.membershipSizeMinusUser }</span> other community members have successfully completed <span class="underline">#{ membership.group.completedInitiatives }</span> that improved the <span class="underline">#{ membership.group.name }</span>.
 

@@ -1,4 +1,6 @@
 section.mt-s
-  p #{ event.creator.username }
+  div
+    img src=event.creator.avatarThumbUrl
+    span = event.creator.username
   section.mt
     p = comment.body

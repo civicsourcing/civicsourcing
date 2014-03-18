@@ -11,3 +11,5 @@
 # for more details see: http://emberjs.com/guides/application/
 window.CivicSourcing = Ember.Application.create()
 
+Ember.TextField.reopen
+  attributeBindings: ['accept', 'autocomplete', 'autofocus', 'name', 'required']

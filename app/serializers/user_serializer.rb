@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
   attributes :id, :username, :slug
 
   has_one :upload
+  has_many :aggregate_follows, serializer: EventSerializer
 end

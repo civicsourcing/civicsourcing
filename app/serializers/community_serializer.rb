@@ -7,6 +7,8 @@ class CommunitySerializer < ActiveModel::Serializer
   has_one :upload, serializer: UploadSerializer
   has_one :feed, serializer: FeedSerializer
 
+  has_many :initiatives, serializer: InitiativeSerializer
+
   def membership_id
     scope.memberships.where(group: object).pluck(:id).first
   end
