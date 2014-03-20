@@ -10,11 +10,11 @@ form
       Ember.TextField value=name id="name"
 
     li
-      label for="private"
-        | Private?
-      Ember.Checkbox checkedBinding=private id="private"
-
-    li
       CivicSourcing.FileFieldView
 
-    button.btn.positive-background click="submit" Submit
+    li
+      Ember.Checkbox checkedBinding=private id="private"
+      label.css-label.no-transition for="private"
+        | Private?
+
+  button.btn.btn-form.mt click="submit" Submit

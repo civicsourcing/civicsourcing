@@ -1,33 +1,24 @@
-.fr
+if isTopLevel
+  span Created by #{ parentEvent.creator.username }
+  a.ml click="toggleComments" classNames="epsilon"
+    | #{ parentEvent.childrenCount } Comments
+
+if isExpanded
+  .mb-s
+    unless isTopLevel
+      a click="createComment" classNames="epsilon"
+        | Reply
   if isCreatingComment
-    a click="cancelComment" classNames="epsilon"
-      | Cancel
-  else
-    a click="createComment" classNames="epsilon"
-      | Reply
-.clearfix.mb
-
-if isCreatingComment
-  form.mb
-
-    ul.form-fields
-
-      li
-        label for="body"
-          | Body
-        Ember.TextArea value=newComment.body id="body"
+    form.mb
+      Ember.TextArea value=newComment.body classNames="fw"
 
       Ember.TextField type="hidden" value=newComment.parentEvent
 
-      button.btn.positive-background click="submitComment" Submit
-
-
-a click="toggleComments" classNames="epsilon"
-  if isExpanded
-    | Collapse
-  else
-    | Expand
-if isExpanded
+      .mt-s
+      button.btn click="submitComment" Comment
+      unless isTopLevel
+        a.epsilon.ml click="cancelComment"
+          | Cancel
   .comments
     each event in events
       feed-event event=event

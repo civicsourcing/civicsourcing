@@ -21,4 +21,4 @@ form
         | Description:
       Ember.TextArea value=description id="description"
 
-    button.btn.positive-background click="submit" Submit
+  button.btn.btn-form.mt click="submit" Submit

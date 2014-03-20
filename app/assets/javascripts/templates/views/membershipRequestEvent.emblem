@@ -1,11 +1,12 @@
-section.mt-s
-  p #{ membershipRequest.member.username } has requested membership in #{ membershipRequest.group.name }.
+section.event
+  unless membershipRequest.pending
+    span.mr-t.bold
+      if membershipRequest.accepted
+        span.positive-text Accepted
+      if membershipRequest.declined
+        span.negative-text Declined
+
+  span #{ membershipRequest.member.username } has requested membership in #{ membershipRequest.group.name }.
   .mt
     if membershipRequest.pending
       membership-request-response-controls membershipRequest=membershipRequest
-    else
-      if membershipRequest.accepted
-        | Accepted
-      else
-        if membershipRequest.declined
-          | Declined

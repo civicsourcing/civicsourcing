@@ -1,33 +1,27 @@
-.fr
-  Ember.Select content=sortMethods selection=currentSortMethod optionValuePath="content.id" optionLabelPath="content.name"
-.clearfix
-
-.fr
-  if isCreatingPost
-    a click="cancelPost" classNames="epsilon"
-      | Cancel Post
-  else
-    a click="createPost" classNames="epsilon"
-      | Create Post
-.clearfix.mb
+.mt-s.mb
+  unless isCreatingPost
+    .fl.mb
+      button.btn click="createPost" classNames="epsilon"
+        | New Post
+  .fr
+    Ember.Select content=sortMethods selection=currentSortMethod optionValuePath="content.id" optionLabelPath="content.name" classNames="epsilon"
+  .clearfix
 
 if isCreatingPost
   form.mb
 
-    ul.form-fields
-      li
-        label for="title"
-          | Post Title:
-        Ember.TextField value=newPost.title id="title"
+    .mb
+      label.mr-s for="title"
+        | Post Title:
+      Ember.TextField value=newPost.title id="title"
 
-      li
-        label for="body"
-          | Body
-        Ember.TextArea value=newPost.body id="body"
+    Ember.TextField type="hidden" value=newPost.feed
 
-      Ember.TextField type="hidden" value=newPost.feed
+    Ember.TextArea value=newPost.body classNames="fw input--tall mb" placeholder="Share your thoughts on the community."
 
-      button.btn.positive-background click="submitPost" Submit
+    button.btn click="submitPost" Submit
+    a.va-middle.ml-s.epsilon click="cancelPost" classNames="epsilon"
+      | Cancel
 
 .feed
   each event in events

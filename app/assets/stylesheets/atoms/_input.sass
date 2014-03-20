@@ -1,9 +1,18 @@
-input
-  height: 30px
+input, textarea
   border-radius: 0
   border: thin solid $cs-base-border-color
   padding: 4px
 
-input, .input-width
+input
+  height: 30px
+
+input, textarea, .input-width
   width: 200px
   display: inline-block
+
+textarea
+  @include border-box
+  resize: none
+
+.input--tall
+  height: 200px

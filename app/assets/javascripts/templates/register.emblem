@@ -25,4 +25,4 @@ form
         | Gender:
       Ember.Select content=genders optionValuePath="content.name" optionLabelPath="content.label" value="male" id="gender"
 
-    button click="submit" Register
+  button.btn.btn-form.mt click="submit" Register

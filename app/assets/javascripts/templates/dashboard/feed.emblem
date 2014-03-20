@@ -1,4 +1,8 @@
-Ember.Select content=sortMethods selection=currentSortMethod optionValuePath="content.id" optionLabelPath="content.name"
+.bb
+  .mt-s.mr
+    .fr
+      Ember.Select content=sortMethods selection=currentSortMethod optionValuePath="content.id" optionLabelPath="content.name" classNames="epsilon"
+    .clearfix.mb-s
 
 .inner-dashboard
   .feed

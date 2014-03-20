@@ -18,8 +18,22 @@ CivicSourcing.CommentControlsComponent = Em.Component.extend
   ).property("currentSortMethod.sortProperties")
 
   expand: (->
-    @set("isExpanded", true) if @get("parentEvent.parent")?
+    if @get("isTopLevel")
+      @initializeComment()
+    else
+      @set("isExpanded", true)
   ).on('didInsertElement')
+
+  isTopLevel: (->
+    !@get("parentEvent.parent")?
+  ).property('parentEvent.parent')
+
+  initializeComment: ->
+    newComment = @store.createRecord('comment',
+      parentEvent: @get("parentEvent")
+    )
+    @set('newComment', newComment)
+    @set('isCreatingComment', true)
 
   events: (->
     events = @get("parentEvent.children")
@@ -38,12 +52,8 @@ CivicSourcing.CommentControlsComponent = Em.Component.extend
         @set("isExpanded", true)
 
     createComment: ->
-      newComment = @store.createRecord('comment',
-        parentEvent: @get("parentEvent")
-      )
-      @set('newComment', newComment)
+      @initializeComment()
       @set('isExpanded', true)
-      @set('isCreatingComment', true)
 
     cancelComment: ->
       @get('newComment').rollback()

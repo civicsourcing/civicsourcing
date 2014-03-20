@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require jquery-fileupload/basic
 #= require jquery-fileupload/vendor/tmpl
+#= require_tree ./addons
 #= require handlebars
 #= require ember
 #= require ember-data
@@ -13,3 +14,14 @@ window.CivicSourcing = Ember.Application.create()
 
 Ember.TextField.reopen
   attributeBindings: ['accept', 'autocomplete', 'autofocus', 'name', 'required']
+
+Ember.Select.reopen
+  classNames: ["customSelect"]
+
+  applyCustomSelect: (->
+    $(".customSelect").each (i) ->
+      $(this).customSelect()
+  ).on('didInsertElement')
+
+Ember.Checkbox.reopen
+  classNames: ["css-checkbox"]

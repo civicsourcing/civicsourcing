@@ -1,7 +1,6 @@
-section.mt-s
+section.event
   a click="togglePost"
     h1.bold.gamma = post.title
-  p Created by #{ event.creator.username }
   if isExpanded
-    section.mt
+    section.mb-s
       p = post.body

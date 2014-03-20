@@ -1,6 +1,9 @@
-section.mt-s
+section.event
   div
-    img src=event.creator.avatarThumbUrl
-    span = event.creator.username
-  section.mt
+    .flag.flag--small
+      .flag__img
+        img src=event.creator.avatarThumbUrl
+      .flag__body
+        event.creator.username
+  section
     p = comment.body

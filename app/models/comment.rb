@@ -7,7 +7,8 @@ class Comment < ActiveRecord::Base
 
   private
   def post_to_parent
+    create_event_if_nil
     parent = FlexibleFeeds::Event.find(parent_event_id)
-    @comment.child_of(parent)
+    child_of(parent)
   end
 end

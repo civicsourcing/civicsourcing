@@ -10,9 +10,9 @@ form
         | Password:
       Ember.TextField id="password" valueBinding="password" type="password"
 
-    li
-      label for="remember_me"
-        | Remember Me:
-      Ember.Checkbox id="remember_me" checkedBinding="remember_me"
+  .mt
+    button.btn.btn-form.va-bottom click="authenticate" Login
 
-    button click="authenticate" Login
+    Ember.Checkbox id="remember_me" checkedBinding="remember_me"
+    label.css-label.ml-s.no-transition for="remember_me"
+      | remember me

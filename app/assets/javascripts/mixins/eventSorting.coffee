@@ -17,7 +17,7 @@ CivicSourcing.EventSortingMixin = Ember.Mixin.create(
     name: "Popular"
     id: "popular"
     sortAscending: false
-    sortProperties: ["popularity"]
+    sortProperties: ["popularity", "votesSum"]
   ,
     name: "Controversial"
     id: "controversial"
