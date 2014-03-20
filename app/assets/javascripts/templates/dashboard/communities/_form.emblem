@@ -12,7 +12,7 @@ form
     li
       label for="private"
         | Private?
-      Ember.Checkbox value=private id="private"
+      Ember.Checkbox checkedBinding=private id="private"
 
     li
       CivicSourcing.FileFieldView

@@ -23,8 +23,6 @@ module Api
         @comment = Comment.new(comment_params)
 
         if @comment.save
-          parent = FlexibleFeeds::Event.find(params[:comment][:parent_event_id])
-          @comment.child_of(parent)
           render json: @comment, status: :created
         else
           render json: @comment.errors, status: :unprocessable_entity
@@ -35,6 +33,8 @@ module Api
       # PATCH/PUT /comments/1.json
       def update
         @comment = Comment.find(params[:id])
+
+        authorize! :manage, @comment
 
         if @comment.update(comment_params)
           head :no_content
@@ -47,6 +47,9 @@ module Api
       # DELETE /comments/1.json
       def destroy
         @comment = Comment.find(params[:id])
+
+        authorize! :manage, @comment
+        
         @comment.destroy
 
         head :no_content
@@ -54,8 +57,8 @@ module Api
 
       private
       def comment_params
-        params.require(:comment).permit(:body).
-          merge(commenter: current_user)
+        params.require(:comment).permit(:body, :parent_event_id).
+          merge(creator: current_user)
       end
     end
   end

@@ -1,0 +1,4 @@
+a.btn.positive-background click="acceptMembership"
+  | Accept
+a.btn.negative-background.ml-s click="declineMembership"
+  | Decline

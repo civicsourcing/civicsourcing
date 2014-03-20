@@ -23,8 +23,6 @@ module Api
         @community = Community.new(community_params)
 
         if @community.save
-          @community.add_member(current_user)
-          current_user.follow(@community.feed)
           render json: @community, status: :created,
             location: api_v1_community_path(@community)
         else
@@ -37,6 +35,7 @@ module Api
       def update
         @community = Community.friendly.find(params[:id])
 
+        authorize! :manage, @community
         if @community.update(community_params)
           head :no_content
         else
@@ -48,6 +47,8 @@ module Api
       # DELETE /communities/1.json
       def destroy
         @community = Community.friendly.find(params[:id])
+
+        authorize! :manage, @community
         @community.destroy
 
         head :no_content
@@ -55,7 +56,8 @@ module Api
 
       private
       def community_params
-        params.require(:community).permit(:name, :private, :upload_id)
+        params.require(:community).permit(:name, :private, :upload_id).
+          merge(creator: current_user)
       end
     end
   end

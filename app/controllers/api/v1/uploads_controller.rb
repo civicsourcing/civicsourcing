@@ -10,8 +10,7 @@ class Api::V1::UploadsController < ApplicationController
   end
 
   private
-
-    def upload_params
-      params.require(:upload).permit(:file)
-    end
+  def upload_params
+    params.require(:upload).permit(:file)
+  end
 end

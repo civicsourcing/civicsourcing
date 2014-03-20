@@ -13,6 +13,7 @@ class Initiative < ActiveRecord::Base
   belongs_to :community
 
   has_one :workroom
+  has_one :feed, through: :workroom
 
   validates :name, presence: true, length: { in: 3..80 }
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
@@ -20,7 +21,7 @@ class Initiative < ActiveRecord::Base
 
   validate :creator_is_a_member_of_the_community
 
-  after_create :create_workroom
+  after_create :create_workroom, :create_creator_membership
 
   def custom_feeds
     [creator.feed, community.feed]
@@ -35,5 +36,10 @@ class Initiative < ActiveRecord::Base
       group_id: community.id).exists?
         errors.add(:community, "must be a community that you belong to")
     end
+  end
+
+  def create_creator_membership
+    add_officer(creator)
+    creator.follow(feed)
   end
 end

@@ -24,7 +24,6 @@ module Api
         @membership = Adhocracy::Membership.new(membership_params)
 
         if @membership.save
-          current_user.follow(@membership.group.feed)
           render json: @membership, status: :created, location: api_v1_membership_path(@membership)
         else
           render json: @membership.errors, status: :unprocessable_entity
@@ -35,6 +34,8 @@ module Api
       # PATCH/PUT /memberships/1.json
       def update
         @membership = Adhocracy::Membership.find(params[:id])
+
+        authorize! :manage, @membership
 
         if @membership.update(membership_params)
           head :no_content
@@ -47,7 +48,8 @@ module Api
       # DELETE /memberships/1.json
       def destroy
         @membership = Adhocracy::Membership.find(params[:id])
-        current_user.unfollow(@membership.group.feed)
+
+        authorize! :manage, @membership
         @membership.destroy
 
         head :no_content

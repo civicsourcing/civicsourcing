@@ -1,5 +1,6 @@
 CivicSourcing.Community = CivicSourcing.Amorphous.extend(
   CivicSourcing.FeedableMixin
+  CivicSourcing.GroupMixin
 
   initiatives: DS.hasMany "initiative",
     async: true
@@ -7,8 +8,6 @@ CivicSourcing.Community = CivicSourcing.Amorphous.extend(
   name: DS.attr()
   slug: DS.attr()
   private: DS.attr()
-
-  membershipId: DS.attr()
   
   completedInitiatives: DS.attr()
   membershipSize: DS.attr()

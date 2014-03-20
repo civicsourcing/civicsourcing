@@ -8,7 +8,42 @@ class Ability
 
     can :authenticate, :all if !user.new_record?
 
-    # Users
+    # Comment
+    can :manage, Comment do |comment|
+      comment.event.creator == user
+    end
+
+    # Community
+    can :manage, Community do |community|
+      community.has_officer?(user)
+    end
+
+    # Initiative
+    can :manage, Initiative do |initiative|
+      initiative.has_officer?(user)
+    end
+
+    # Membership
+    can :manage, Adhocracy::Membership do |membership|
+      membership.member == user
+    end
+
+    # MembershipRequest
+    can :manage, Adhocracy::MembershipRequest do |request|
+      request.member == user
+    end
+
+    # MembershipRequestResponse
+    can :create, MembershipRequestResponse do |response|
+      response.membership_request.group.has_officer?(user)
+    end
+
+    # Post
+    can :manage, Post do |post|
+      post.event.creator == user
+    end
+
+    # User
     can :update, User do |edited_user|
       edited_user.id == user.id
     end

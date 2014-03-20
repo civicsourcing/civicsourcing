@@ -34,6 +34,8 @@ module Api
       def update
         @post = Post.find(params[:id])
 
+        authorize! :manage, @post
+
         if @post.update(post_params)
           head :no_content
         else
@@ -45,6 +47,8 @@ module Api
       # DELETE /posts/1.json
       def destroy
         @post = Post.find(params[:id])
+
+        authorize! :manage, @post
         @post.destroy
 
         head :no_content
@@ -53,7 +57,7 @@ module Api
       private
       def post_params
         params.require(:post).permit(:title, :body, :feed_id).
-          merge(poster: current_user)
+          merge(creator: current_user)
       end
     end
   end

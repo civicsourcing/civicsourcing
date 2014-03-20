@@ -6,7 +6,16 @@
       button.btn.negative-background click="leave"
         | Leave
     else
-      button.btn.positive-background click="join"
-        | Join
+      if private
+        if userHasRequestedMembership
+          button.btn.positive-background click="requestMembership" disabled="true"
+            | Request Membership
+        else
+          button.btn.positive-background click="requestMembership"
+            | Request Membership
+      else
+        button.btn.positive-background click="join"
+          | Join
 
-feed-forum feed=feed
+if userCanView
+  feed-forum feed=feed

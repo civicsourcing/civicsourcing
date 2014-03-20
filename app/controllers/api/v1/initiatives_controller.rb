@@ -23,8 +23,6 @@ module Api
         @initiative = Initiative.new(initiative_params)
 
         if @initiative.save
-          @initiative.add_member(current_user)
-          current_user.follow(@initiative.workroom.feed)
           render json: @initiative, status: :created,
             location: api_v1_initiative_path(@initiative)
         else
@@ -37,6 +35,7 @@ module Api
       def update
         @initiative = Initiative.friendly.find(params[:id])
 
+        authorize! :manage, @initiative
         if @initiative.update(initiative_params)
           head :no_content
         else
@@ -48,6 +47,9 @@ module Api
       # DELETE /initiatives/1.json
       def destroy
         @initiative = Initiative.friendly.find(params[:id])
+
+        authorize! :manage, @initiative
+        
         @initiative.destroy
 
         head :no_content

@@ -12,8 +12,12 @@
       button.btn.negative-background click="leave"
         | Leave
     else
-      button.btn.positive-background click="join"
-        | Join
+      if userHasRequestedMembership
+        button.btn.positive-background click="requestMembership" disabled="true"
+          | Request Membership
+      else
+        button.btn.positive-background click="requestMembership"
+          | Request Membership
 
 if userIsMember
   feed-forum feed=workroom.feed
