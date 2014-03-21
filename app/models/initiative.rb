@@ -21,13 +21,35 @@ class Initiative < ActiveRecord::Base
 
   validate :creator_is_a_member_of_the_community
 
-  after_create :create_workroom, :create_creator_membership
+  after_create :create_workroom, :create_creator_membership, :add_badges
+  after_destroy :remove_badges
 
   def custom_feeds
     [creator.feed, community.feed]
   end
 
   private
+  def badge_qualifications
+    [
+      { prerequisite: 1, badge: 6 }
+    ]
+  end
+
+  def add_badges
+    badge_granter.add_badges
+  end
+
+  def remove_badges
+    badge_granter.remove_badges
+  end
+
+  def badge_granter
+    create_event_if_nil
+    count = creator.founded_initiatives(true).count
+    BadgeGranter.new(user: creator, count: count,
+      qualifications: badge_qualifications)
+  end
+
   def creator_is_a_member_of_the_community
     unless Adhocracy::Membership.where(
       member_type: creator.class.name,

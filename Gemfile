@@ -21,6 +21,7 @@ gem "strip_attributes"
 
 gem 'cancan'
 gem "devise"
+gem 'merit', :git => 'git://github.com/timothycommoner/merit.git'
 
 gem 'carrierwave'
 gem 'mini_magick'

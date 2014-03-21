@@ -4,10 +4,15 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :slug
       t.string :gender, null: false, default: "male"
+      t.boolean :admin, null: false, default: false
       
       t.integer :upload_id
 
       t.string :authentication_token
+
+      ## Merit
+      t.integer :sash_id
+      t.integer :level, :default => 0
       
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""

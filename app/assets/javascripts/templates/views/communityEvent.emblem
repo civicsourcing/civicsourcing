@@ -1,0 +1,5 @@
+section.event
+  h1.bold.gamma
+    span.mr-s Community:
+    link-to "dashboard.communities.community" community
+      community.name

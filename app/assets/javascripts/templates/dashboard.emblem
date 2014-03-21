@@ -26,3 +26,4 @@ aside.awards.column-right.fixed-aside
     | Recognition and Rewards
   .b
     | Awards
+    div Points: #{ points }

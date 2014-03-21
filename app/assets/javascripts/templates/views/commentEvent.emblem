@@ -4,6 +4,7 @@ section.event
       .flag__img
         img src=event.creator.avatarThumbUrl
       .flag__body
-        event.creator.username
+        span = event.creator.username
+        span.ml Points #{ event.creator.points }
   section
     p = comment.body

@@ -7,13 +7,13 @@ module Api
       end
 
       def create
-        user = User.new(user_params)
-        authorize! :create, user
-        user.save
-        if user.save
-          render json: user, location: api_v1_dashboard_path, status: :created
+        @user = User.new(user_params)
+        authorize! :create, @user
+        @user.save
+        if @user.save
+          render json: @user, location: api_v1_dashboard_path, status: :created
         else
-          render json: user.errors, location: api_v1_register_path,
+          render json: @user.errors, location: api_v1_register_path,
             status: :unprocessable_entity
         end
       end

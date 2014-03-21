@@ -6,6 +6,13 @@ GIT
     active_model_serializers (0.9.0.pre)
       activemodel (>= 3.2)
 
+GIT
+  remote: git://github.com/timothycommoner/merit.git
+  revision: d6328a599b6bc73f5ae76efe13a6a520eeb4a8d8
+  specs:
+    merit (2.0.0)
+      ambry (~> 0.3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,6 +43,7 @@ GEM
     addressable (2.3.5)
     adhocracy (0.3.1)
       rails (~> 4.0)
+    ambry (0.3.1)
     arel (4.0.2)
     atomic (1.1.16)
     barber (0.4.2)
@@ -133,7 +141,7 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
-    flexible_feeds (0.3.5)
+    flexible_feeds (0.3.6)
       rails (~> 4.0)
     formatador (0.2.4)
     friendly_id (5.0.3)
@@ -177,7 +185,7 @@ GEM
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    lumberjack (1.0.4)
+    lumberjack (1.0.5)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -283,7 +291,7 @@ GEM
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
     thor (0.18.1)
-    thread_safe (0.2.0)
+    thread_safe (0.3.1)
       atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     timers (1.1.0)
@@ -329,6 +337,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   launchy
+  merit!
   mini_magick
   pg
   premailer-rails
