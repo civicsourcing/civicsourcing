@@ -5,13 +5,15 @@
 .column-center-alt
   margin-top: 28px
   padding-left: 30px
-  padding-right: 290px
 
 .column-left
   left: 55px
 
 .column-right
   right: 55px
+
+.unstable-right
+  padding-right: 290px
 
 .fixed-aside
   @extend .aside
@@ -29,6 +31,9 @@
     display: none
 
   .column-center-alt
+    padding-right: 0
+
+  .unstable-right
     padding-right: 0
 
 @media screen and (max-width: 960px)

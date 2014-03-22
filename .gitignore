@@ -6,6 +6,8 @@
 /log
 /tmp
 /public/system
+/public/assets
+/public/uploads
 /coverage/
 /spec/tmp
 # Ignore application configuration

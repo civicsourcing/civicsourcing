@@ -1,4 +1,4 @@
-.ms-l
+.ms-l.unstable-right
   h1.agency-font.ib == name
   .ib.va-top.ml
     if userIsMember

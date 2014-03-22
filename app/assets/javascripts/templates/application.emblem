@@ -27,12 +27,14 @@ header.header.header-box.fw.fixed.base-background
 
   CivicSourcing.LoginIOView
 
-.main.relative
+.main
   == outlet
 
-footer.footer.fw.fixed
-  .flag.flag--bottom.ml-h
+footer.footer.fw
+  .flag.flag--bottom.pl-h
     .flag__img
+      link-to 'home' classNames="fw ib"
+        img.logo-sm src=logoPath
     .flag__body
 
         nav

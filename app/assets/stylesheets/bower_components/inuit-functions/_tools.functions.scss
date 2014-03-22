@@ -1,3 +1,5 @@
+@import "bower_components/inuit-defaults/settings.defaults";
+
 ///*------------------------------------*\
 //    #FUNCTIONS
 //\*------------------------------------*/
@@ -17,6 +19,7 @@
 //     padding: halve(3.2px);
 // }
 //
+
 @function quarter($inuit-number) {
     @return round($inuit-number / 4);
 }
