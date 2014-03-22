@@ -4,6 +4,9 @@ CivicSourcing.User = CivicSourcing.Amorphous.extend(
   aggregateFollows: DS.hasMany "event",
     inverse: 'aggregator', async: true
 
+  badges: DS.hasMany "badge",
+    async: true
+
   username: DS.attr()
   email: DS.attr()
   password: DS.attr()

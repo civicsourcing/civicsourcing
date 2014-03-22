@@ -13,6 +13,7 @@ CivicSourcing::Application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
+      resources :badges, constraints: FormatTest.new(:json)
       resources :comments, constraints: FormatTest.new(:json)
       resources :communities, constraints: FormatTest.new(:json)
       resources :events, constraints: FormatTest.new(:json)

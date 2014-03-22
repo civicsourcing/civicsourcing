@@ -1,12 +1,12 @@
 aside.leaderboard.column-left.fixed-aside
   h1.gamma
     | Leaderboard
-  .b.b--no-b
-    | Shows my community rating:
-  .b.b--no-b.aside-background
-    | Community Scores
-  .b.aside-background
-    | Community
+  .b.b--no-b.p.pe-s
+    | Engage with your communities:
+  each membership in memberships
+    link-to 'dashboard.communities.community' membership.group
+      .b.b--no-b.p.pe-s.aside-background
+        membership.group.name
 
 section
   nav.nav.nav--dashboard.full-width
@@ -24,6 +24,9 @@ section
 aside.awards.column-right.fixed-aside
   h1.gamma
     | Recognition and Rewards
-  .b
-    | Awards
-    div Points: #{ points }
+  .b.b--no-b.p.pe-s
+    .bold.delta.mb-t Total Engagement: #{ points }
+    | Earn special recognition by participating in your communities.
+  .b.p.pe-s
+    link-to 'dashboard.reputation'
+      | Recognition Earned

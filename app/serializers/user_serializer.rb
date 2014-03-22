@@ -5,4 +5,5 @@ class UserSerializer < ActiveModel::Serializer
 
   has_one :upload
   has_many :aggregate_follows, serializer: EventSerializer
+  has_many :badges, serializer: BadgeSerializer
 end

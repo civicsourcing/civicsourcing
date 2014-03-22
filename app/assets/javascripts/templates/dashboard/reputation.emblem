@@ -1,0 +1,13 @@
+.inner-dashboard
+  p Earn special recognition by participating in your communities.
+
+  ul.badge-summary.block-list.mb-s
+    each badge in controller
+      li.block-list__item.pb-t.ps0
+        .flag.bb.b--highlight
+          .flag__img.badge-points.highlight-background.light-text.ib.ta-center
+            | #{ badge.points } points
+          span.flag__body
+            span.bold.mr-s
+              badge.name
+            span.delta = badge.description
