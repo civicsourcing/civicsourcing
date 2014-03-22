@@ -1,13 +1,15 @@
 if isTopLevel
   span Created by #{ parentEvent.creator.username }
   a.ml click="toggleComments" classNames="epsilon"
+    .small-icon.conversation-link-icon.mr-t
     | #{ parentEvent.childrenCount } Comments
 
 if isExpanded
   .mb-s
     unless isTopLevel
-      a click="createComment" classNames="epsilon"
-        | Reply
+      a click="createComment"
+        .small-icon.reply-icon.mr-t
+        span.epsilon Reply
   if isCreatingComment
     form.mb
       Ember.TextArea value=newComment.body classNames="fw"

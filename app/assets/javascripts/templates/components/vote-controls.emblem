@@ -1,14 +1,12 @@
 a click="upvote"
-  .upvote.vote-btn
-    if currentUpvote
-      | Unvote
-    else
-      | Up
+  if currentUpvote
+    .vote-btn.upvote-active
+  else
+    .vote-btn.upvote
 a click="downvote"
-  .downvote.vote-btn
-    if currentDownvote
-      | Unvote
-    else
-      | Down
+  if currentDownvote
+    .vote-btn.downvote-active
+  else
+    .vote-btn.downvote
 .score.epsilon
   = event.votesSum

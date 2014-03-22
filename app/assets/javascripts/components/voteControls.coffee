@@ -1,7 +1,7 @@
 CivicSourcing.VoteControlsComponent = Em.Component.extend
 
   tagName: 'section'
-  classNames: 'vote-controls b ta-center pl-t pr-t'
+  classNames: 'vote-controls b ta-center'
 
   event: null
 
