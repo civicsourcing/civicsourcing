@@ -21,4 +21,35 @@ describe Community do
     end
   end
 
+  context "it calculates a community's engagement rank" do
+    before :each do
+      @school = FactoryGirl.create(:community_category, name: "School")
+      @city = FactoryGirl.create(:community_category, name: "City")
+      @school1 = FactoryGirl.create(:community, community_category: @school)
+      @school2 = FactoryGirl.create(:community, community_category: @school)
+      @school3 = FactoryGirl.create(:community, community_category: @school)
+      @city1 = FactoryGirl.create(:community, community_category: @city)
+      @user1 = FactoryGirl.create(:user)
+      @user2 = FactoryGirl.create(:user)
+      @user3 = FactoryGirl.create(:user)
+      @user1.add_points(10)
+      @user2.add_points(25)
+      @user3.add_points(20)
+      @user1.join(@school1)
+      @user2.join(@school2)
+      @user3.join(@school3)
+      @user1.join(@school3)
+      @user1.join(@city1)
+      @user2.join(@city1)
+      @user3.join(@city1)
+    end
+
+    it "by comparing a community with other groups in its category" do
+      expect(@school3.engagement_rank).to eq 1
+      expect(@school2.engagement_rank).to eq 2
+      expect(@school1.engagement_rank).to eq 3
+    end
+
+  end
+
 end
