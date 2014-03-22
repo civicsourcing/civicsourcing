@@ -1,0 +1,40 @@
+.ms-l
+  h1.agency-font.ib == name
+  .ib.va-top.ml
+    if userIsMember
+      button.btn.negative-background click="leave"
+        | Resign from Initiative
+    else
+      if userHasRequestedMembership
+        button.btn.positive-background click="requestMembership" disabled="true"
+          | Request Membership
+      else
+        button.btn.positive-background click="requestMembership"
+          | Request Membership
+  link-to "dashboard.communities.community" community
+    .epsilon.mb
+      span.mr-t An initiative of #{ community.name }
+  p.me-s == description
+
+  if userIsMember
+    ul.nav.nav--active-blue.mt
+      li.b.p.pe-s
+        link-to 'initiative.feed' this
+          | Discussion
+      li.b.p.pe-s
+        link-to 'initiative.task' this
+          | Create Task
+
+    .flag.flag--top.mt
+      .flag__img
+        aside.aside
+          h1.beta.mb-t.agency-font
+            | Tasks
+          .b.p.pe-s
+            ol.ml
+              each task in tasks
+                task-item task=task
+
+      .flag__body
+        .column-center-alt
+          == outlet

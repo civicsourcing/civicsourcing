@@ -1,6 +1,7 @@
-h1 Contact Us
+.column-center
+  h1 Contact Us
 
-p
-  span.mr-t Email:
-  a href="mailto:civicsourcing@outlook.com" target="_top" civicsourcing@outlook.com
-p Follow us on Twitter: @CivicSourcing
+  p
+    span.mr-t Email:
+    a href="mailto:civicsourcing@outlook.com" target="_top" civicsourcing@outlook.com
+  p Follow us on Twitter: @CivicSourcing

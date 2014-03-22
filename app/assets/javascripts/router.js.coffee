@@ -17,6 +17,10 @@ CivicSourcing.Router.map ()->
       @route 'new'
       @resource 'dashboard.communities.community', path: ':community_id'
     @resource 'dashboard.reputation', path: 'reputation'
+  @resource 'initiative', path: 'initiative/:initiative_id', ->
+    @resource 'initiative.feed', path: 'feed'
+    @resource 'initiative.task', path: 'task'
+    @resource 'initiative.event', path: 'event'
 
 CivicSourcing.Router.reopen
   location: "history"

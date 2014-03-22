@@ -5,5 +5,6 @@ class WorkroomSerializer < ActiveModel::Serializer
 
   has_one :initiative, serializer: InitiativeSerializer
   has_one :feed, serializer: FeedSerializer
+  has_many :tasks, serializer: TaskSerializer
 
 end

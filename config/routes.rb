@@ -22,6 +22,7 @@ CivicSourcing::Application.routes.draw do
       resources :memberships, constraints: FormatTest.new(:json)
       resources :membership_requests, constraints: FormatTest.new(:json)
       resources :membership_request_responses, constraints: FormatTest.new(:json)
+      resources :tasks, constraints: FormatTest.new(:json)
       resources :posts, constraints: FormatTest.new(:json)
       resources :uploads, only: [:create, :show]
       resources :users, constraints: FormatTest.new(:json)

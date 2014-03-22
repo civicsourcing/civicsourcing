@@ -1,21 +1,22 @@
 .flag.flag--top
-  img.flag__img src=logoUrl
+  .flag__img
+    img src=logoUrl
+    .delta.mb
+      if userIsMember
+        a click="leave"
+          | Leave Community
+      else
+        if private
+          if userHasRequestedMembership
+            a click="requestMembership" disabled="true"
+              | Request Membership
+          else
+            a click="requestMembership"
+              | Request Membership
+        else
+          a click="join"
+            | Join Community
   .flag__body
     h1.mb.ib.mr.va-top == name
-    if userIsMember
-      button.btn.negative-background click="leave"
-        | Leave
-    else
-      if private
-        if userHasRequestedMembership
-          button.btn.positive-background click="requestMembership" disabled="true"
-            | Request Membership
-        else
-          button.btn.positive-background click="requestMembership"
-            | Request Membership
-      else
-        button.btn.positive-background click="join"
-          | Join
-
 if userCanView
   feed-forum feed=feed

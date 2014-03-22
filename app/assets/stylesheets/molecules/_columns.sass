@@ -2,6 +2,11 @@
   padding-left: 350px
   padding-right: 350px
 
+.column-center-alt
+  margin-top: 28px
+  padding-left: 30px
+  padding-right: 290px
+
 .column-left
   left: 55px
 
@@ -9,6 +14,30 @@
   right: 55px
 
 .fixed-aside
+  @extend .aside
   position: fixed
   top: 195px
+
+.aside
   width: 270px
+
+@media screen and (max-width: 1200px)
+  .column-center
+    padding-right: 0
+
+  .column-right
+    display: none
+
+  .column-center-alt
+    padding-right: 0
+
+@media screen and (max-width: 960px)
+  .column-center
+    padding-right: 0
+    padding-left: 0
+
+  .column-left
+    display: none
+
+  .column-right
+    display: none

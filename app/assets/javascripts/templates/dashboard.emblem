@@ -1,14 +1,14 @@
 aside.leaderboard.column-left.fixed-aside
-  h1.gamma
+  h1.beta.mb-t.agency-font
     | Leaderboard
   .b.b--no-b.p.pe-s
     | Engage with your communities:
   each membership in memberships
     link-to 'dashboard.communities.community' membership.group
-      .b.b--no-b.p.pe-s.aside-background
+      .b.p.pe-s.aside-background
         membership.group.name
 
-section
+section.column-center
   nav.nav.nav--dashboard.full-width
     link-to 'dashboard.feed' classNames="nav--dashboard__btn muted-background delta bold"
       | Community Feed
@@ -22,7 +22,7 @@ section
     == outlet
 
 aside.awards.column-right.fixed-aside
-  h1.gamma
+  h1.beta.mb-t.agency-font
     | Recognition and Rewards
   .b.b--no-b.p.pe-s
     .bold.delta.mb-t Total Engagement: #{ points }

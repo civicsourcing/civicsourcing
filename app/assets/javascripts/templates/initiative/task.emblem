@@ -1,0 +1,13 @@
+.b.p-s
+  form
+
+    if !isValid
+      | Invalid
+
+    ul.form-fields
+      li
+        label for="name"
+          | Name:
+        Ember.TextField value=name id="name"
+
+    button.btn.btn-form.mt click="submit" Submit

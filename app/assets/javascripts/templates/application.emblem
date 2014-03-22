@@ -1,12 +1,12 @@
-header.header.header-box.fw.fixed
-  .flag.ml-l
+header.header.header-box.fw.fixed.base-background
+  .flag.flag--bottom.ml-l
     .flag__img
       link-to 'home' classNames="fw ib"
         img.logo src=logoPath
     .flag__body
 
       nav
-        ul.nav.nav--header.highlight-background
+        ul.nav.nav--header.highlight-background.agency-font
           li.c.light-text.va-top
             link-to 'static.how-it-works' classNames="link__light bold"
               .header-icon.gear-icon
@@ -27,14 +27,12 @@ header.header.header-box.fw.fixed
 
   CivicSourcing.LoginIOView
 
-.main.relative.column-center
+.main.relative
   == outlet
 
 footer.footer.fw.fixed
   .flag.flag--bottom.ml-h
     .flag__img
-      link-to 'home' classNames="fw ib"
-        img.logo-sm src=logoPath
     .flag__body
 
         nav

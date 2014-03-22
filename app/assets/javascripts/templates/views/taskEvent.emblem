@@ -1,0 +1,3 @@
+section.event
+  h1.bold.gamma
+    span.mr-s Task: #{ task.name }

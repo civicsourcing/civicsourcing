@@ -1,0 +1,4 @@
+if task.name
+  li class=completed:line-through
+    a click="toggleTask"
+      task.name

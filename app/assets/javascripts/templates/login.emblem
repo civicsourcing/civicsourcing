@@ -1,18 +1,19 @@
-form
-  ul.form-fields
-    li
-      label for="identification"
-        | Email:
-      Ember.TextField id="identification" valueBinding="identification"
+.column-center
+  form
+    ul.form-fields
+      li
+        label for="identification"
+          | Email:
+        Ember.TextField id="identification" valueBinding="identification"
 
-    li
-      label for="password"
-        | Password:
-      Ember.TextField id="password" valueBinding="password" type="password"
+      li
+        label for="password"
+          | Password:
+        Ember.TextField id="password" valueBinding="password" type="password"
 
-  .mt
-    button.btn.btn-form.va-bottom click="authenticate" Login
+    .mt
+      button.btn.btn-form.va-bottom click="authenticate" Login
 
-    Ember.Checkbox id="remember_me" checkedBinding="remember_me"
-    label.css-label.ml-s.no-transition for="remember_me"
-      | remember me
+      Ember.Checkbox id="remember_me" checkedBinding="remember_me"
+      label.css-label.ml-s.no-transition for="remember_me"
+        | remember me

@@ -1,28 +1,29 @@
-form
-  ul.form-fields
-    li
-      label for="username"
-        | Username:
-      Ember.TextField valueBinding="username" id="username"
+.column-center
+  form
+    ul.form-fields
+      li
+        label for="username"
+          | Username:
+        Ember.TextField valueBinding="username" id="username"
 
-    li
-      label for="email"
-        | Email:
-      Ember.TextField valueBinding="email" id="email"
+      li
+        label for="email"
+          | Email:
+        Ember.TextField valueBinding="email" id="email"
 
-    li
-      label for="password"
-        | Password:
-      Ember.TextField valueBinding="password" type="password" id="password"
+      li
+        label for="password"
+          | Password:
+        Ember.TextField valueBinding="password" type="password" id="password"
 
-    li
-      label for="password_confirmation"
-        | Password Confirmation:
-      Ember.TextField valueBinding="passwordConfirmation" type="password" id="password_confirmation"
+      li
+        label for="password_confirmation"
+          | Password Confirmation:
+        Ember.TextField valueBinding="passwordConfirmation" type="password" id="password_confirmation"
 
-    li
-      label for="gender"
-        | Gender:
-      Ember.Select content=genders optionValuePath="content.name" optionLabelPath="content.label" value="male" id="gender"
+      li
+        label for="gender"
+          | Gender:
+        Ember.Select content=genders optionValuePath="content.name" optionLabelPath="content.label" value="male" id="gender"
 
-  button.btn.btn-form.mt click="submit" Register
+    button.btn.btn-form.mt click="submit" Register

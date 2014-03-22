@@ -1,7 +1,7 @@
 each membership in controller
   section.list-item-initiative.mb.mr.p.b.b--muted
     h1.gamma
-      link-to 'dashboard.initiatives.initiative' membership.group
+      link-to 'initiative.feed' membership.group
         == membership.group.name
     span.fl.epsilon.highlight-text
       | Description

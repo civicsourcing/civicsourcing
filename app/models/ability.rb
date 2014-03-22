@@ -43,6 +43,11 @@ class Ability
       post.event.creator == user
     end
 
+    # Task
+    can :manage, Task do |task|
+      task.workroom.initiative.has_officer?(user)
+    end
+
     # User
     can :update, User do |edited_user|
       edited_user.id == user.id
