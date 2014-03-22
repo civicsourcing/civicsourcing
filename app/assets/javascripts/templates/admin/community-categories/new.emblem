@@ -1,0 +1,3 @@
+h1.bb New Community Category
+
+partial "admin/community-categories/form"

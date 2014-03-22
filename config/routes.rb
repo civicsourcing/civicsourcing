@@ -16,6 +16,7 @@ CivicSourcing::Application.routes.draw do
       resources :badges, constraints: FormatTest.new(:json)
       resources :comments, constraints: FormatTest.new(:json)
       resources :communities, constraints: FormatTest.new(:json)
+      resources :community_categories, constraints: FormatTest.new(:json)
       resources :events, constraints: FormatTest.new(:json)
       resources :feeds, constraints: FormatTest.new(:json)
       resources :initiatives, constraints: FormatTest.new(:json)

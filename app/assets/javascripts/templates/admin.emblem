@@ -1,0 +1,6 @@
+.p
+  ul.nav
+    li
+      link-to "admin.community-categories" | Community Categories
+
+  == outlet

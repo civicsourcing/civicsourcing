@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :username, :slug, :points, :gender
+  attributes :id, :username, :slug, :points, :gender, :admin
 
   has_one :upload
   has_many :aggregate_follows, serializer: EventSerializer

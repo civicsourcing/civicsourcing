@@ -13,6 +13,7 @@ CivicSourcing.Community = CivicSourcing.Amorphous.extend(
   membershipSize: DS.attr()
 
   upload: DS.belongsTo 'upload'
+  communityCategory: DS.belongsTo 'communityCategory'
 
   logoUrl: (->
     uploadUrl = @get("upload.file.file.url")

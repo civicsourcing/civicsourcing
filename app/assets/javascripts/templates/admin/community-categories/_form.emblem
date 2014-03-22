@@ -1,0 +1,12 @@
+form
+
+  if !isValid
+    | Invalid
+
+  ul.form-fields
+    li
+      label for="name"
+        | Category Name:
+      Ember.TextField value=name id="name"
+
+  button.btn.btn-form.mt click="submit" Submit

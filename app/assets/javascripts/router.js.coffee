@@ -21,6 +21,11 @@ CivicSourcing.Router.map ()->
     @resource 'initiative.feed', path: 'feed'
     @resource 'initiative.task', path: 'task'
     @resource 'initiative.event', path: 'event'
+  @resource 'admin', ->
+    @resource 'admin.community-categories', path: 'community-categories', ->
+      @route 'new'
+      @resource 'admin.community-categories.community-category',
+        path: 'community-category/:community_category_id'
 
 CivicSourcing.Router.reopen
   location: "history"

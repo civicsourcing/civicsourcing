@@ -14,10 +14,11 @@ class Community < ActiveRecord::Base
   belongs_to :upload
 
   has_many :initiatives
-  belongs_to :founder, class_name: "User"
+  belongs_to :community_category
 
   validates :name, presence: true, length: { in: 3..80 }
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
+  validates :community_category, presence: true
 
   after_create :create_creator_membership, :add_badges
   after_destroy :remove_badges

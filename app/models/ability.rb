@@ -18,6 +18,11 @@ class Ability
       community.has_officer?(user)
     end
 
+    # CommunityCategory
+    can :manage, CommunityCategory do |community_category|
+      user.admin?
+    end
+
     # Initiative
     can :manage, Initiative do |initiative|
       initiative.has_officer?(user)

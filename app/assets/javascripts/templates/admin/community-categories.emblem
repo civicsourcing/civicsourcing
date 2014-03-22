@@ -1,0 +1,6 @@
+ul.nav
+  li.b.p.pe-s
+    link-to "admin.community-categories" | Index
+  li.b.p.pe-s
+    link-to "admin.community-categories.new" | New Category
+== outlet

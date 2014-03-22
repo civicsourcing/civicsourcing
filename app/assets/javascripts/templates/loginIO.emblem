@@ -1,4 +1,6 @@
 if session.isAuthenticated
+  if session.currentUser.admin
+    link-to "admin" classNames="epsilon mr" | Admin Panel
   a.epsilon click="invalidateSession" Logout
 else
   a.epsilon click="authenticateSession" Login

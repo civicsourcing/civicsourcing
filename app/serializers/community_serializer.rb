@@ -6,6 +6,7 @@ class CommunitySerializer < ActiveModel::Serializer
 
   has_one :upload, serializer: UploadSerializer
   has_one :feed, serializer: FeedSerializer
+  has_one :community_category, serializer: CommunityCategorySerializer
 
   has_many :initiatives, serializer: InitiativeSerializer
 

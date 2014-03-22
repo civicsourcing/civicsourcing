@@ -1,0 +1,5 @@
+ul.block-list
+  each communityCategory in controller
+    li.block-list__item.bb
+      link-to "admin.community-categories.community-category" communityCategory
+        = communityCategory.name

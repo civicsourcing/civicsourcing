@@ -10,6 +10,13 @@ form
       Ember.TextField value=name id="name"
 
     li
+      label for="communityCategory"
+        | Category:
+      span.input-width
+        Ember.TextField type="hidden" valueBinding="communityCategory"
+        community-category-set-autocomplete
+
+    li
       CivicSourcing.FileFieldView
 
     li

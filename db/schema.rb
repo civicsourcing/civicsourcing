@@ -83,10 +83,12 @@ ActiveRecord::Schema.define(version: 20140322063211) do
     t.boolean  "private",               default: false, null: false
     t.integer  "upload_id"
     t.integer  "completed_initiatives", default: 0,     null: false
+    t.integer  "community_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "communities", ["community_category_id"], name: "index_communities_on_community_category_id", using: :btree
   add_index "communities", ["name"], name: "index_communities_on_name", using: :btree
   add_index "communities", ["private"], name: "index_communities_on_private", using: :btree
   add_index "communities", ["slug"], name: "index_communities_on_slug", unique: true, using: :btree
@@ -98,15 +100,6 @@ ActiveRecord::Schema.define(version: 20140322063211) do
   end
 
   add_index "community_categories", ["name"], name: "index_community_categories_on_name", using: :btree
-
-  create_table "community_category_joins", force: true do |t|
-    t.integer  "community_id"
-    t.integer  "community_category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "community_category_joins", ["community_id", "community_category_id"], name: "community_category_joins_on_join", unique: true, using: :btree
 
   create_table "flexible_feeds_event_joins", force: true do |t|
     t.integer  "feed_id"

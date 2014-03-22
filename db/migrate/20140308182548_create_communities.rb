@@ -9,9 +9,12 @@ class CreateCommunities < ActiveRecord::Migration
 
       t.integer :completed_initiatives, null: false, default: 0
 
+      t.integer :community_category_id
+
       t.timestamps
     end
     add_index :communities, :name
+    add_index :communities, :community_category_id
     add_index :communities, :private
     add_index :communities, :slug,             :unique => true
   end
