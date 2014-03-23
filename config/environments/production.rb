@@ -78,7 +78,7 @@ CivicSourcing::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  CivicSourcing.config.middleware.use ExceptionNotification::Rack,
+  CivicSourcing::Application.config.middleware.use ExceptionNotification::Rack,
   :email => {
     :email_prefix => "[CivicSourcing] ",
     :sender_address => %{"notifier" <notifier@civicsourcin.com>},
