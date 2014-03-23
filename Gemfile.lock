@@ -13,6 +13,13 @@ GIT
     merit (2.0.0)
       ambry (~> 0.3.0)
 
+GIT
+  remote: git://github.com/valgusk/capistrano-rails-console.git
+  revision: 2e5f78e28faf0c21bce67a8c14c3678bf0407076
+  specs:
+    capistrano-rails-console (0.1.1)
+      capistrano (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -262,7 +269,7 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     rubyzip (1.1.2)
-    sass (3.2.17)
+    sass (3.2.18)
     sass-rails (4.0.2)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.2.0)
@@ -327,6 +334,7 @@ DEPENDENCIES
   capistrano (~> 3.1.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1.1)
+  capistrano-rails-console!
   capistrano-rbenv (~> 2.0)
   carrierwave
   coffee-rails
