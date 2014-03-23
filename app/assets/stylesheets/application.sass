@@ -1,10 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic)
 
-@font-face 
-  font-family: 'AgencyFB-Bold'
-  src: url(font-path('AgencyFB-Bold.ttf'))
-  font-weight: bold
-  font-style: normal
+@include font-face('AgencyFB-Bold', 'AgencyFB-Bold.tff', $weight: bold, $asset-pipeline: true)
 
 @import "settings"
 
