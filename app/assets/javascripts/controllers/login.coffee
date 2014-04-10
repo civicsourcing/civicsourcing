@@ -1,4 +1,3 @@
-CivicSourcing.LoginController = Ember.Controller.extend(
-  Ember.SimpleAuth.LoginControllerMixin,
-    authenticator: "ember-simple-auth:authenticators:devise"
+CivicSourcing.LoginController = Ember.Controller.extend(Ember.SimpleAuth.LoginControllerMixin,
+  authenticatorFactory: "authenticator:devise"
 )

@@ -12,7 +12,7 @@ if isExpanded
         span.epsilon Reply
   if isCreatingComment
     form.mb
-      Ember.TextArea value=newComment.body classNames="fw"
+      CivicSourcing.MarkdownEditor value=newComment.body classNames="fw"
 
       Ember.TextField type="hidden" value=newComment.parentEvent
 

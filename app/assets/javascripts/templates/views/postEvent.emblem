@@ -3,4 +3,4 @@ section.event
     h1.bold.gamma = post.title
   if isExpanded
     section.mb-s
-      p = post.body
+      p = formatMarkdown post.body

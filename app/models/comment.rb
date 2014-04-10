@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
   acts_as_eventable created_by: :creator, is_child: true,
     is_parent: { permitted_children: [Comment] }
 
+  validates :body, presence: true, length: { minimum: 1 }
+
   after_create :post_to_parent, :add_badges
   after_destroy :remove_badges
 

@@ -3,6 +3,9 @@ class Post < ActiveRecord::Base
   acts_as_eventable add_to_feeds: :custom_feeds, created_by: :creator,
     is_parent: { permitted_children: [Comment] }
 
+  validates :title, presence: true, length: { in: 3..160 }
+  validates :body, presence: true, length: { minimum: 1 }
+
   after_create :add_badges
   after_destroy :remove_badges
 

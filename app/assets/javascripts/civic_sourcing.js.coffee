@@ -11,3 +11,5 @@
 #= require_tree ./routes
 #= require ./router
 #= require_self
+
+CivicSourcing.markdown = Markdown.getSanitizingConverter()

@@ -17,7 +17,7 @@ if isCreatingPost
 
     Ember.TextField type="hidden" value=newPost.feed
 
-    Ember.TextArea value=newPost.body classNames="fw input--tall mb" placeholder="Share your thoughts on the community."
+    CivicSourcing.MarkdownEditor value=newPost.body classNames="fw input--tall mb" placeholder="Share your thoughts on the community."
 
     button.btn click="submitPost" Submit
     a.va-middle.ml-s.epsilon click="cancelPost" classNames="epsilon"

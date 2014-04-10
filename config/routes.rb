@@ -27,13 +27,14 @@ CivicSourcing::Application.routes.draw do
       resources :posts, constraints: FormatTest.new(:json)
       resources :uploads, only: [:create, :show]
       resources :users, constraints: FormatTest.new(:json)
-      devise_for :users
       resources :votes, constraints: FormatTest.new(:json)
       resources :workrooms, constraints: FormatTest.new(:json)
       get 'register', to: 'users#new', constraints: FormatTest.new(:json)
       get 'dashboard', to: 'dashboard#index', constraints: FormatTest.new(:json)
     end
   end
+  
+  devise_for :users
 
   get '*foo', :to => 'ember#index', :constraints => FormatTest.new(:html)
   get '/', :to => 'ember#index', :constraints => FormatTest.new(:html)

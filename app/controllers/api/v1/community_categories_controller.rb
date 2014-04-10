@@ -12,7 +12,7 @@ module Api
       # GET /community_categories/1
       # GET /community_categories/1.json
       def show
-        @community_category = CommunityCategory.friendly.find(params[:id])
+        @community_category = CommunityCategory.find(params[:id])
 
         render json: @community_category, serializer: CommunityCategorySerializer
       end
@@ -34,7 +34,7 @@ module Api
       # PATCH/PUT /community_categories/1
       # PATCH/PUT /community_categories/1.json
       def update
-        @community_category = CommunityCategory.friendly.find(params[:id])
+        @community_category = CommunityCategory.find(params[:id])
 
         authorize! :manage, @community_category
         if @community_category.update(community_category_params)
@@ -47,7 +47,7 @@ module Api
       # DELETE /community_categories/1
       # DELETE /community_categories/1.json
       def destroy
-        @community_category = CommunityCategory.friendly.find(params[:id])
+        @community_category = CommunityCategory.find(params[:id])
 
         authorize! :manage, @community_category
         @community_category.destroy
