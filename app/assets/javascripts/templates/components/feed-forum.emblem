@@ -10,14 +10,28 @@
 if isCreatingPost
   form.mb
 
+    if errors.base
+      .error-block.error-block--base.mb
+        each error in errors.base
+          p = error
     .mb
       label.mr-s for="title"
         | Post Title:
       Ember.TextField value=newPost.title id="title"
 
+      if errors.title
+        .error-block.error-block--base.mt-s
+          each error in errors.title
+            p = error
+
     Ember.TextField type="hidden" value=newPost.feed
 
     CivicSourcing.MarkdownEditor value=newPost.body classNames="fw input--tall mb" placeholder="Share your thoughts on the community."
+
+    if errors.body
+      .error-block.error-block--base.mt-s.mb
+        each error in errors.body
+          p = error
 
     button.btn click="submitPost" Submit
     a.va-middle.ml-s.epsilon click="cancelPost" classNames="epsilon"

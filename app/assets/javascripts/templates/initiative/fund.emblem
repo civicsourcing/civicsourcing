@@ -1,0 +1,16 @@
+if isNew
+  h1.bb Start New Fund
+
+  partial "initiative/fund/form"
+
+else
+  h1 = title
+  donation-form fund=model
+
+  .delta.mb-s
+    | Aiming for $#{ goal } by #{ endDate }. Current total $#{ totalDonations}.
+
+  = formatMarkdown body
+
+  each fundReward in fundRewards
+    = fundReward.description

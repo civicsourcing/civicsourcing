@@ -1,0 +1,5 @@
+section.event
+  h1.bold.gamma
+    span.mr-s Petition:
+    link-to 'initiative.petition' petition.initiative
+      petition.title

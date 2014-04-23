@@ -4,6 +4,10 @@ class ApplicationController < ActionController::API
   include AbstractController::Translation
 
   before_filter :authenticate_user_from_token!
+
+  def render_validation_errors errors
+    render json: {errors: errors.to_hash}, status: 422
+  end
  
   private
   

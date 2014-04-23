@@ -1,0 +1,5 @@
+section.event
+  h1.bold.gamma
+    span.mr-t #{ petitionSignature.user.username } signed
+    link-to 'initiative.petition' petitionSignature.petition.initiative
+      petitionSignature.petition.title

@@ -4,11 +4,15 @@ CivicSourcing.FormMixin = Ember.Mixin.create(
 
   actions:
     submit: (event, view) ->
-      @get('model').save().then ((response) =>
+      @get('model').save().then(((response) =>
         if @get("dynamicSegment")
           @transitionToRoute(@get("transitionTo"), @content)
         else
           @transitionToRoute(@get("transitionTo"))
-      )
+      ),
+      ((response) ->
+        console.log(response.errors)
+      ))
+
 
 )

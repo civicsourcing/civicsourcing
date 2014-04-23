@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322063211) do
+ActiveRecord::Schema.define(version: 20140418162742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,49 @@ ActiveRecord::Schema.define(version: 20140322063211) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "fund_donations", force: true do |t|
+    t.integer  "fund_id"
+    t.integer  "user_id"
+    t.integer  "fund_reward_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fund_donations", ["fund_id"], name: "index_fund_donations_on_fund_id", using: :btree
+  add_index "fund_donations", ["fund_reward_id"], name: "index_fund_donations_on_fund_reward_id", using: :btree
+  add_index "fund_donations", ["user_id"], name: "index_fund_donations_on_user_id", using: :btree
+
+  create_table "fund_rewards", force: true do |t|
+    t.integer  "fund_id"
+    t.integer  "minimum_donation"
+    t.text     "description"
+    t.integer  "limit"
+    t.integer  "fund_donation_count", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fund_rewards", ["fund_id"], name: "index_fund_rewards_on_fund_id", using: :btree
+
+  create_table "funds", force: true do |t|
+    t.boolean  "admin_approved",  default: false, null: false
+    t.boolean  "active",          default: false, null: false
+    t.integer  "goal"
+    t.integer  "stretch_goal"
+    t.datetime "end_date"
+    t.text     "body"
+    t.string   "title"
+    t.integer  "initiative_id"
+    t.integer  "total_donations", default: 0,     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "funds", ["active"], name: "index_funds_on_active", using: :btree
+  add_index "funds", ["end_date"], name: "index_funds_on_end_date", using: :btree
+  add_index "funds", ["initiative_id"], name: "index_funds_on_initiative_id", using: :btree
+
   create_table "initiatives", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -250,6 +293,41 @@ ActiveRecord::Schema.define(version: 20140322063211) do
     t.integer "sash_id"
     t.string  "category", default: "default"
   end
+
+  create_table "petition_deliveries", force: true do |t|
+    t.integer  "petition_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "petition_deliveries", ["petition_id"], name: "index_petition_deliveries_on_petition_id", using: :btree
+
+  create_table "petition_signatures", force: true do |t|
+    t.integer  "petition_id"
+    t.integer  "user_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "petition_signatures", ["user_id", "petition_id"], name: "index_petition_signatures_on_user_id_and_petition_id", unique: true, using: :btree
+
+  create_table "petitions", force: true do |t|
+    t.integer  "initiative_id"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "goal"
+    t.datetime "delivery_date"
+    t.string   "deliver_to"
+    t.integer  "petition_signatures_count", default: 0,     null: false
+    t.boolean  "delivered",                 default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "petitions", ["delivered"], name: "index_petitions_on_delivered", using: :btree
+  add_index "petitions", ["delivery_date"], name: "index_petitions_on_delivery_date", using: :btree
+  add_index "petitions", ["initiative_id"], name: "index_petitions_on_initiative_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -305,6 +383,7 @@ ActiveRecord::Schema.define(version: 20140322063211) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "customer_href"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

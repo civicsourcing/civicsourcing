@@ -1,6 +1,11 @@
 .column-center
   form
     ul.form-fields
+
+      if loginError
+        .error-block.error-block--base.mb
+          p = loginError
+
       li
         label for="identification"
           | Email:

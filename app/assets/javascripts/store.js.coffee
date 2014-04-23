@@ -9,3 +9,9 @@ CivicSourcing.Store = DS.Store.extend
   adapter: '-active-model'
 
 CivicSourcing.inject('component', 'store', 'store:main')
+
+CivicSourcing.FundSerializer = DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin,
+  attrs:
+    fundRewards:
+      embedded: "always"
+)

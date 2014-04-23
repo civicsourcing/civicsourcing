@@ -27,7 +27,7 @@ module Api
           render json: @community_category, status: :created,
             location: api_v1_community_category_path(@community_category)
         else
-          render json: @community_category.errors, status: :unprocessable_entity
+          render_validation_errors @community_category.errors
         end
       end
 
@@ -40,7 +40,7 @@ module Api
         if @community_category.update(community_category_params)
           head :no_content
         else
-          render json: @community_category.errors, status: :unprocessable_entity
+          render_validation_errors @community_category.errors
         end
       end
 

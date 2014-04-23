@@ -26,7 +26,7 @@ module Api
         if @membership_request.save
           render json: @membership_request, status: :created, location: api_v1_membership_request_path(@membership_request)
         else
-          render json: @membership_request.errors, status: :unprocessable_entity
+          render_validation_errors @membership_request.errors
         end
       end
 
@@ -39,7 +39,7 @@ module Api
         if @membership_request.update(membership_request_params)
           head :no_content
         else
-          render json: @membership_request.errors, status: :unprocessable_entity
+          render_validation_errors @membership_request.errors
         end
       end
 

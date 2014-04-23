@@ -24,6 +24,12 @@
       li.b.p.pe-s
         link-to 'initiative.task' this
           | Create Task
+      li.b.p.pe-s
+        link-to 'initiative.petition' this
+          | Petition
+      li.b.p.pe-s
+        link-to 'initiative.fund' this
+          | Fund
 
     .flag.flag--top.mt
       .flag__img

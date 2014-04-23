@@ -1,0 +1,5 @@
+section.event
+  h1.bold.gamma
+    link-to 'initiative.petition' petitionDelivery.petition.initiative
+      petitionSignature.petition.title
+    span.mr-t delivered!

@@ -1,0 +1,63 @@
+form
+
+  ul.form-fields
+
+    if errors.base
+      .error-block.error-block--base.mb
+        each error in errors.base
+          p = error.message
+
+    li
+      label for="title"
+        | Title:
+      Ember.TextField value=title id="title"
+
+      if errors.title
+        .error-block.mt-s
+          each error in errors.title
+            p = error.message
+
+    li
+      label for="goal"
+        | Monetary Goal:
+      Ember.TextField value=goal id="goal"
+
+      if errors.goal
+        .error-block.mt-s
+          each error in errors.goal
+            p = error.message
+    li
+      label for="stretchGoal"
+        | Stretch Goal:
+      Ember.TextField value=stretchGoal id="stretchGoal"
+
+      if errors.stretchGoal
+        .error-block.mt-s
+          each error in errors.stretchGoal
+            p = error.message
+    li
+      label for="endDate"
+        | End Date:
+      date-picker date=endDate
+
+      if errors.endDate
+        .error-block.mt-s
+          each error in errors.endDate
+            p = error.message
+
+    CivicSourcing.MarkdownEditor value=body classNames="fw" placeholder="Tell us about the fund"
+
+    if errors.body
+      .error-block.error-block--base.mt-s
+        each error in errors.body
+          p = error.message
+
+    each fundRewards
+      div class=this._destroy:hidden:shown
+        hr.rule
+        a click="removeReward this" X
+        = render "initiative/fund/reward/fields" this
+
+    button.btn click="addReward" Add Reward
+
+  button.btn.btn-form.mt click="submit" Submit

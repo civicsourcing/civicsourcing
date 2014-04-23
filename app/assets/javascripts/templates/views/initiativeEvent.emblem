@@ -1,5 +1,5 @@
 section.event
   h1.bold.gamma
     span.mr-s Initiative:
-    link-to link-to 'initiative.feed' initiative
+    link-to 'initiative.feed' initiative
       initiative.name

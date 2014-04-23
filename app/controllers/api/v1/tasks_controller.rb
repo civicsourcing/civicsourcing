@@ -25,7 +25,7 @@ module Api
         if @task.save
           render json: @task, status: :created
         else
-          render json: @task.errors, status: :unprocessable_entity
+          render_validation_errors @task.errors
         end
       end
 
@@ -39,7 +39,7 @@ module Api
         if @task.update(task_params)
           head :no_content
         else
-          render json: @task.errors, status: :unprocessable_entity
+          render_validation_errors @task.errors
         end
       end
 

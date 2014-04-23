@@ -23,6 +23,16 @@ class Ability
       user.admin?
     end
 
+    # Fund
+    can :manage, Fund do |fund|
+      fund.initiative.has_officer?(user)
+    end
+
+    # FundDonation
+    can :manage, FundDonation do |fund_donation|
+      fund_donation.user == user
+    end
+
     # Initiative
     can :manage, Initiative do |initiative|
       initiative.has_officer?(user)
@@ -41,6 +51,16 @@ class Ability
     # MembershipRequestResponse
     can :create, MembershipRequestResponse do |response|
       response.membership_request.group.has_officer?(user)
+    end
+
+    # Petition
+    can :manage, Petition do |petition|
+      petition.initiative.has_officer?(user)
+    end
+
+    # PetitionSignature
+    can :manage, PetitionSignature do |petition_signature|
+      petition_signature.user == user
     end
 
     # Post

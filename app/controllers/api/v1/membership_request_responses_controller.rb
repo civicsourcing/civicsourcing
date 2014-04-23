@@ -30,8 +30,7 @@ module Api
         if @membership_request_response.save
           render json: @membership_request_response, status: :created
         else
-          render json: @membership_request_response.errors,
-            status: :unprocessable_entity
+          render_validation_errors @membership_request_response.errors
         end
       end
 

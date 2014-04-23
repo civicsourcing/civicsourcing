@@ -21,6 +21,8 @@ CivicSourcing.Router.map ()->
     @resource 'initiative.feed', path: 'feed'
     @resource 'initiative.task', path: 'task'
     @resource 'initiative.event', path: 'event'
+    @resource 'initiative.petition', path: 'petition'
+    @resource 'initiative.fund', path: 'fund'
   @resource 'admin', ->
     @resource 'admin.community-categories', path: 'community-categories', ->
       @route 'new'

@@ -14,6 +14,9 @@ gem "pg"
 
 gem "thin"
 
+gem 'balanced'
+
+gem 'nokogiri'
 gem 'premailer-rails'
 
 gem "active_model_serializers", :git => 'git://github.com/timothycommoner/active_model_serializers.git', branch: "feature/support_polymorphic_associations"
@@ -25,6 +28,7 @@ gem 'flexible_feeds'
 
 gem 'friendly_id', '~> 5.0.0'
 gem "strip_attributes"
+gem "date_validator"
 
 gem 'cancan'
 gem "devise"
@@ -32,6 +36,9 @@ gem 'merit', :git => 'git://github.com/timothycommoner/merit.git'
 
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem "redcarpet"
+gem "slim"
 
 gem "quiet_assets"
 
@@ -41,6 +48,7 @@ gem "sass-rails"
 gem "uglifier"
 
 gem "jquery-rails"
+gem 'jquery-ui-sass-rails'
 gem "jquery-fileupload-rails"
 
 gem 'qunit-rails'

@@ -1,0 +1,5 @@
+section.event
+  h1.bold.gamma
+    span.mr-s Fund:
+    link-to 'initiative.fund' fund.initiative
+      fund.title

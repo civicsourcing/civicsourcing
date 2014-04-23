@@ -1,29 +1,58 @@
 .column-center
   form
     ul.form-fields
+      if errors.base
+        .error-block.error-block--base.mb
+          each error in errors.base
+            p = error.message
       li
         label for="username"
           | Username:
         Ember.TextField valueBinding="username" id="username"
+
+        if errors.username
+          .error-block.mt-s
+            each error in errors.username
+              p = error.message
 
       li
         label for="email"
           | Email:
         Ember.TextField valueBinding="email" id="email"
 
+        if errors.email
+          .error-block.mt-s
+            each error in errors.email
+              p = error.message
+
       li
         label for="password"
           | Password:
         Ember.TextField valueBinding="password" type="password" id="password"
+
+        if errors.password
+          .error-block.mt-s
+            each error in errors.password
+              p = error.message
 
       li
         label for="password_confirmation"
           | Password Confirmation:
         Ember.TextField valueBinding="passwordConfirmation" type="password" id="password_confirmation"
 
+        if errors.passwordConfirmation
+          .error-block.mt-s
+            each error in errors.passwordConfirmation
+              p = error.message
+
       li
         label for="gender"
           | Gender:
         Ember.Select content=genders optionValuePath="content.name" optionLabelPath="content.label" value="male" id="gender"
+
+        if errors.gender
+          .error-block.mt-s
+            each error in errors.gender
+              p = error.message
 
     button.btn.btn-form.mt click="submit" Register

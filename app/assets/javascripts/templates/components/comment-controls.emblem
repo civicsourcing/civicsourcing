@@ -12,7 +12,18 @@ if isExpanded
         span.epsilon Reply
   if isCreatingComment
     form.mb
+
+      if errors.base
+        .error-block.error-block--base.mb
+          each error in errors.base
+            p = error
+
       CivicSourcing.MarkdownEditor value=newComment.body classNames="fw"
+
+      if errors.body
+        .error-block.error-block--base.mt-s
+          each error in errors.body
+            p = error
 
       Ember.TextField type="hidden" value=newComment.parentEvent
 

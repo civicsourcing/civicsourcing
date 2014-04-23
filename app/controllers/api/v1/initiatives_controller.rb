@@ -26,7 +26,7 @@ module Api
           render json: @initiative, status: :created,
             location: api_v1_initiative_path(@initiative)
         else
-          render json: @initiative.errors, status: :unprocessable_entity
+          render_validation_errors @initiative.errors
         end
       end
 
@@ -39,7 +39,7 @@ module Api
         if @initiative.update(initiative_params)
           head :no_content
         else
-          render json: @initiative.errors, status: :unprocessable_entity
+          render_validation_errors @initiative.errors
         end
       end
 

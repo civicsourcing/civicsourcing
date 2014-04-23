@@ -161,7 +161,7 @@ define("ember-simple-auth/authenticators/base",
     var Base = Ember.Object.extend(Ember.Evented, {
       /**
         Restores the session from a set of properties. __This method is invoked by
-        the session either after the applciation starts up and session data was
+        the session either after the application starts up and session data was
         restored from the store__ or when properties in the store have changed due
         to external events (e.g. in another tab) and the new set of properties
         needs to be re-checked for whether it still constitutes an authenticated
@@ -331,6 +331,23 @@ define("ember-simple-auth/core",
       return crossOriginWhitelist.indexOf(urlOrigin) > -1 || urlOrigin === documentOrigin;
     }
 
+    function setupSession(store, container) {
+      var session = Session.create({ store: store, container: container });
+      var router  = container.lookup('router:main');
+      Ember.A([
+        'sessionAuthenticationSucceeded',
+        'sessionAuthenticationFailed',
+        'sessionInvalidationSucceeded',
+        'sessionInvalidationFailed'
+      ]).forEach(function(event) {
+        session.on(event, function() {
+          Array.prototype.unshift.call(arguments, event);
+          router.send.apply(router, arguments);
+        });
+      });
+      return session;
+    }
+
     var extensionInitializers = [];
 
     /**
@@ -415,7 +432,7 @@ define("ember-simple-auth/core",
 
       options.storeFactory = options.storeFactory || 'session-store:local-storage';
       var store            = container.lookup(options.storeFactory);
-      var session          = Session.create({ store: store, container: container });
+      var session          = setupSession(store, container);
 
       container.register('session:main', session, { instantiate: false });
       Ember.A(['controller', 'route']).forEach(function(component) {
@@ -506,23 +523,6 @@ define("ember-simple-auth/mixins/application_route_mixin",
       @static
     */
     var ApplicationRouteMixin = Ember.Mixin.create({
-      activate: function() {
-        var _this = this;
-        this._super();
-        this.get('session').on('sessionAuthenticationSucceeded', function() {
-          _this.send('sessionAuthenticationSucceeded');
-        });
-        this.get('session').on('sessionAuthenticationFailed', function(error) {
-          _this.send('sessionAuthenticationFailed', error);
-        });
-        this.get('session').on('sessionInvalidationSucceeded', function() {
-          _this.send('sessionInvalidationSucceeded');
-        });
-        this.get('session').on('sessionInvalidationFailed', function(error) {
-          _this.send('sessionInvalidationFailed', error);
-        });
-      },
-
       actions: {
         /**
           This action triggers transition to the `authenticationRoute` specified in
@@ -751,7 +751,6 @@ define("ember-simple-auth/mixins/authentication_controller_mixin",
           @param {Object} options Any options the auhtenticator needs to authenticate the session
         */
         authenticate: function(options) {
-          var _this = this;
           this.get('session').authenticate(this.get('authenticatorFactory'), options);
         }
       }
@@ -811,10 +810,8 @@ define("ember-simple-auth/mixins/login_controller_mixin",
         */
         authenticate: function() {
           var data = this.getProperties('identification', 'password');
-          if (!Ember.isEmpty(data.identification) && !Ember.isEmpty(data.password)) {
-            this.set('password', null);
-            this._super(data);
-          }
+          this.set('password', null);
+          this._super(data);
         }
       }
     });

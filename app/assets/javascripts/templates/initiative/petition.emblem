@@ -1,0 +1,19 @@
+if isNew
+  h1.bb Start New Petition
+
+  partial "initiative/petition/form"
+
+else
+  h1.ib = title
+  span.va-top.ml.mb
+    if userHasSigned
+      button.btn.negative-background click="unsign"
+        | Unsign
+    else
+      button.btn.positive-background click="sign"
+        | Sign
+
+  .delta.mb-s
+    | To be delivered to #{ deliverTo } after #{ deliveryCondition }.
+
+  = formatMarkdown body

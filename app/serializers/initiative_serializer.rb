@@ -6,6 +6,8 @@ class InitiativeSerializer < ActiveModel::Serializer
 
   has_one :community, serializer: CommunitySerializer
   has_one :workroom, serializer: WorkroomSerializer
+  has_one :petition, serializer: PetitionSerializer
+  has_one :fund, serializer: FundSerializer
 
   def membership_id
     scope.memberships.where(group: object).pluck(:id).first

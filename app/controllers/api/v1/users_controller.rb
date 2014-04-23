@@ -13,8 +13,7 @@ module Api
         if @user.save
           render json: @user, location: api_v1_dashboard_path, status: :created
         else
-          render json: @user.errors, location: api_v1_register_path,
-            status: :unprocessable_entity
+          render_validation_errors @user.errors
         end
       end
 

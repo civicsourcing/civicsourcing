@@ -1,0 +1,6 @@
+== markdown(@petition.body)
+div
+  | Signed (by #{ @petition.petition_signatures_count } citizens),
+  - for signature in @petition.petition_signatures do
+    br
+    == signature.user.username

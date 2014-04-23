@@ -1,0 +1,31 @@
+Ember.TextField type="hidden" valueBinding="id"
+Ember.TextField type="hidden" valueBinding="_destroy"
+unless _destroy
+    li
+      label
+        | Minimum Donation:
+      Ember.TextField value=minimumDonation
+
+      if errors.minimumDonation
+        .error-block.mt-s
+          each error in errors.minimumDonation
+            p = error.message
+    li
+      label
+        | Limited Supply:
+      Ember.TextField value=limit
+
+      if errors.limit
+        .error-block.mt-s
+          each error in errors.limit
+            p = error.message
+
+    li
+      label
+        | Description:
+      Ember.TextArea value=description
+
+    if errors.description
+      .error-block.error-block--base.mt-s
+        each error in errors.description
+          p = error.message

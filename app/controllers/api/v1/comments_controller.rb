@@ -25,7 +25,7 @@ module Api
         if @comment.save
           render json: @comment, status: :created
         else
-          render json: @comment.errors, status: :unprocessable_entity
+          render_validation_errors @comment.errors
         end
       end
 
@@ -39,7 +39,7 @@ module Api
         if @comment.update(comment_params)
           head :no_content
         else
-          render json: @comment.errors, status: :unprocessable_entity
+          render_validation_errors @comment.errors
         end
       end
 

@@ -44,6 +44,8 @@ CivicSourcing.CommentControlsComponent = Em.Component.extend
     )
   ).property("parentEvent.children", "sortAscending", "sortProperties")
 
+  errors: null
+
   actions:
     toggleComments: ->
       if @get("isExpanded")
@@ -62,8 +64,11 @@ CivicSourcing.CommentControlsComponent = Em.Component.extend
 
     submitComment: ->
       newComment = @get('newComment')
-      newComment.save().then ((response) =>
+      newComment.save().then(((response) =>
         @set('newComment', null)
         @set('isCreatingComment', false)
         @get('parentEvent').reload()
-      )
+      ),
+      ((response) =>
+        @set("errors", response.errors)
+      ))

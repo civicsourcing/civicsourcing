@@ -38,6 +38,37 @@ class User < ActiveRecord::Base
       self.authentication_token = generate_authentication_token
     end
   end
+
+  def customer
+    Balanced::Customer.find(customer_href) if customer_href?
+  end
+
+  def find_or_register_customer(params)
+    customer.present? ? customer : register_customer(params)
+  end
+
+  def register_customer(params)
+    customer = Balanced::Customer.new(
+      name: params[:name],
+      email: email,
+      address: {
+        line1: params[:address],
+        city: params[:city],
+        state: params[:state],
+        postal_code: params[:postal_code]
+      }
+    ).save
+    update_column(:customer_href, customer.href)
+    customer
+  end
+
+  def card_registered?
+    customer.try(:source) != nil
+  end
+
+  def bank_registered?
+    customer.try(:destination) != nil
+  end
  
   private
   def generate_authentication_token

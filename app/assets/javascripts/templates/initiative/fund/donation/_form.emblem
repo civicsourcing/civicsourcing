@@ -1,0 +1,30 @@
+form
+
+  ul.form-fields
+
+    if errors.base
+      .error-block.error-block--base.mb
+        each error in errors.base
+          p = error
+
+    li
+      label for="amount"
+        | Amount:
+      Ember.TextField value=donation.amount id="amount"
+
+      if errors.amount
+        .error-block.mt-s
+          each error in errors.amount
+            p = error
+
+    li
+      label for="reward"
+        | Reward:
+      view Ember.Select content=fund.fundRewards optionValuePath="content" optionLabelPath="content.label" value=donation.fundReward prompt="Please select a reward"
+
+      if errors.fundReward
+        .error-block.mt-s
+          each error in errors.fundReward
+            p = error
+
+  button.btn.btn-form.mt click="submit" Donate

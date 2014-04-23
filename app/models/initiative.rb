@@ -12,6 +12,8 @@ class Initiative < ActiveRecord::Base
   belongs_to :upload
   belongs_to :community
 
+  has_one :fund
+  has_one :petition
   has_one :workroom
   has_one :feed, through: :workroom
 
@@ -51,7 +53,7 @@ class Initiative < ActiveRecord::Base
   end
 
   def creator_is_a_member_of_the_community
-    unless Adhocracy::Membership.where(
+    unless community.present? && Adhocracy::Membership.where(
       member_type: creator.class.name,
       member_id: creator.id,
       group_type: community.class.name,

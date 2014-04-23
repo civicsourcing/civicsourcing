@@ -4,6 +4,7 @@ CivicSourcing.FeedForumComponent = Em.Component.extend(
   feed: null
   isCreatingPost: false
   newPost: null
+  errors: null
 
   events: (->
     events = @get("feed.events")
@@ -29,9 +30,12 @@ CivicSourcing.FeedForumComponent = Em.Component.extend(
 
     submitPost: ->
       newPost = @get('newPost')
-      newPost.save().then ((response) =>
+      newPost.save().then(((response) =>
         @set('newPost', null)
         @set('isCreatingPost', false)
         @get('feed').reload()
-      )
+      ),
+      ((response) =>
+        @set("errors", response.errors)
+      ))
 )

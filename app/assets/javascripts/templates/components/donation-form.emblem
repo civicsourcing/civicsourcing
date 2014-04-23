@@ -1,0 +1,15 @@
+if userIsDonating
+  if currentUserHasCard
+    a click="cancelDonationProcess" Cancel
+    span.ms-t |
+    if userHasDonated
+      a click="retractDonation" Retract Donation
+    partial "initiative/fund/donation/form"
+  else
+    a click="cancelDonationProcess" Cancel
+    card-form
+else
+  if userHasDonated
+    a click="restartDonationProcess" Manage Donation
+  else
+    a click="startDonationProcess" Donate

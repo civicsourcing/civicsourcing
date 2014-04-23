@@ -1,0 +1,55 @@
+form
+
+  ul.form-fields
+
+    if errors.base
+      .error-block.error-block--base.mb
+        each error in errors.base
+          p = error.message
+
+    li
+      label for="title"
+        | Title:
+      Ember.TextField value=title id="title"
+
+      if errors.title
+        .error-block.mt-s
+          each error in errors.title
+            p = error.message
+
+    li
+      label for="deliverTo"
+        | Deliver To (email):
+      Ember.TextField value=deliverTo id="deliverTo"
+
+      if errors.deliverTo
+        .error-block.mt-s
+          each error in errors.deliverTo
+            p = error.message
+    li
+      label for="goal"
+        | Signature Goal:
+      Ember.TextField value=goal id="goal"
+
+      if errors.goal
+        .error-block.mt-s
+          each error in errors.goal
+            p = error.message
+    li
+      label for="deliveryDate"
+        | Delivery Date:
+      date-picker date=deliveryDate
+
+      if errors.deliveryDate
+        .error-block.mt-s
+          each error in errors.deliveryDate
+            p = error.message
+
+    CivicSourcing.MarkdownEditor value=body classNames="fw" placeholder="Write the petition"
+
+    if errors.body
+      .error-block.error-block--base.mt-s
+        each error in errors.body
+          p = error.message
+
+  button.btn.btn-form.mt click="submit" Submit

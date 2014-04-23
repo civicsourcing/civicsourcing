@@ -20,7 +20,9 @@ module Devise
       data = {
         user_id: resource.id,
         auth_token: resource.authentication_token,
-        auth_email: resource.email
+        auth_email: resource.email,
+        card_registered: resource.card_registered?,
+        bank_registered: resource.bank_registered?
       }
       render json: data, status: 201
     end

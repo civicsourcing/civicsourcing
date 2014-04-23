@@ -1,13 +1,21 @@
 form
 
-  if !isValid
-    | Invalid
-
   ul.form-fields
+
+    if errors.base
+      .error-block.error-block--base.mb
+        each error in errors.base
+          p = error.message
+
     li
       label for="name"
         | Initiative Name:
       Ember.TextField value=name id="name"
+
+      if errors.name
+        .error-block.mt-s
+          each error in errors.name
+            p = error.message
 
     li
       label for="community"
@@ -16,9 +24,19 @@ form
         Ember.TextField type="hidden" valueBinding="community"
         community-set-autocomplete
 
+      if errors.community
+        .error-block.mt-s
+          each error in errors.community
+            p = error.message
+
     li
       label for="description"
         | Description:
       Ember.TextArea value=description id="description"
+
+      if errors.description
+        .error-block.mt-s
+          each error in errors.description
+            p = error.message
 
   button.btn.btn-form.mt click="submit" Submit

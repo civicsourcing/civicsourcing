@@ -1,13 +1,21 @@
 form
 
-  if !isValid
-    | Invalid
-
   ul.form-fields
+
+    if errors.base
+      .error-block.error-block--base.mb
+        each error in errors.base
+          p = error.message
+
     li
       label for="name"
         | Community Name:
       Ember.TextField value=name id="name"
+
+      if errors.name
+        .error-block.mt-s
+          each error in errors.name
+            p = error.message
 
     li
       label for="communityCategory"
@@ -16,6 +24,11 @@ form
         Ember.TextField type="hidden" valueBinding="communityCategory"
         community-category-set-autocomplete
 
+      if errors.communityCategory
+        .error-block.mt-s
+          each error in errors.communityCategory
+            p = error.message
+
     li
       CivicSourcing.FileFieldView
 
@@ -23,5 +36,10 @@ form
       Ember.Checkbox checkedBinding=private id="private"
       label.css-label.no-transition for="private"
         | Private?
+
+      if errors.private
+        .error-block.mt-s
+          each error in errors.private
+            p = error.message
 
   button.btn.btn-form.mt click="submit" Submit
