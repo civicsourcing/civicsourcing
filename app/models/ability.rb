@@ -8,6 +8,8 @@ class Ability
 
     can :authenticate, :all if !user.new_record?
 
+    can :set_feature, :all if user.admin?
+
     # Comment
     can :manage, Comment do |comment|
       comment.event.creator == user

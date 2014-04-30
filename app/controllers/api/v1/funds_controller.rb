@@ -12,7 +12,7 @@ module Api
       # GET /funds/1
       # GET /funds/1.json
       def show
-        @fund = Fund.find(params[:id])
+        @fund = Fund.friendly.find(params[:id])
 
         render json: @fund
       end
@@ -33,7 +33,7 @@ module Api
       # PATCH/PUT /funds/1
       # PATCH/PUT /funds/1.json
       def update
-        @fund = Fund.find(params[:id])
+        @fund = Fund.friendly.find(params[:id])
 
         authorize! :manage, @fund
         if @fund.update(fund_params)
@@ -46,7 +46,7 @@ module Api
       # DELETE /funds/1
       # DELETE /funds/1.json
       def destroy
-        @fund = Fund.find(params[:id])
+        @fund = Fund.friendly.find(params[:id])
 
         authorize! :manage, @fund
         

@@ -44,15 +44,21 @@ class User < ActiveRecord::Base
   end
 
   def find_or_register_customer(params)
-    customer.present? ? customer : register_customer(params)
+    if customer.present? && underwritten?
+      customer
+    else
+      register_customer(params)
+    end
   end
 
   def register_customer(params)
     customer = Balanced::Customer.new(
       name: params[:name],
       email: email,
+      dob_month: params[:dob_month],
+      dob_year: params[:dob_year],
       address: {
-        line1: params[:address],
+        line1: params[:line1],
         city: params[:city],
         state: params[:state],
         postal_code: params[:postal_code]
@@ -60,6 +66,10 @@ class User < ActiveRecord::Base
     ).save
     update_column(:customer_href, customer.href)
     customer
+  end
+
+  def underwritten?
+    customer.merchant_status == "underwritten"
   end
 
   def card_registered?

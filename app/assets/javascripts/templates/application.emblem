@@ -7,21 +7,22 @@ header.header.header-box.fw.fixed.base-background
 
       nav
         ul.nav.nav--header.highlight-background.agency-font
-          li.c.light-text.va-top
-            link-to 'static.how-it-works' classNames="link__light bold"
+          link-to 'static.how-it-works' classNames="link__light bold"
+            li.c.light-text.va-top
               .header-icon.gear-icon
               | Learn how CivicSourcing works
-          li.c.light-text.va-top
-            if session.isAuthenticated
-              link-to 'dashboard.feed' classNames="link__light bold"
+          if session.isAuthenticated
+            link-to 'dashboard.feed' classNames="link__light bold"
+              li.c.light-text.va-top
                 .header-icon.mic-icon
                 | Start here and voice what matters to you
-            else
-              link-to 'register' classNames="link__light bold"
+          else
+            link-to 'register' classNames="link__light bold"
+              li.c.light-text.va-top
                 .header-icon.mic-icon
                 | Start here and voice what matters to you
-          li.c.light-text.va-top
-            link-to 'dashboard.initiatives' classNames="link__light bold"
+          link-to 'dashboard.initiatives' classNames="link__light bold"
+            li.c.light-text.va-top
               .header-icon.community-icon
               | Collaborate on Initiatives to Improve Your Community
 

@@ -1,5 +1,10 @@
 class Fund < ActiveRecord::Base
+  include Feature
+  
   attr_accessor :creator
+
+  extend FriendlyId
+  friendly_id :title, use: :history
 
   acts_as_eventable add_to_feeds: :custom_feeds, created_by: :creator,
     is_parent: { permitted_children: [Comment] }
@@ -29,6 +34,18 @@ class Fund < ActiveRecord::Base
 
   def approve
     update_column(:admin_approved, true)
+  end
+
+  def succeed
+    fund_donations.each { |donation| donation.pay }
+    update_column(:active, false)
+    FundMailer.funded(self).deliver
+  end
+
+  def fail
+    update_column(:active, false)
+    fund_donations.each { |donation| donation.underfunded }
+    FundMailer.underfunded_manager(self).deliver
   end
 
   private

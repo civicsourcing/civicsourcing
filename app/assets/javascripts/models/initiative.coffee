@@ -9,4 +9,5 @@ CivicSourcing.Initiative = CivicSourcing.Amorphous.extend(
   description: DS.attr()
   name: DS.attr()
   slug: DS.attr()
+  featured: DS.attr()
 )

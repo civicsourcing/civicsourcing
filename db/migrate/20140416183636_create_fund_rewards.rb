@@ -5,7 +5,7 @@ class CreateFundRewards < ActiveRecord::Migration
       t.integer :minimum_donation
       t.text :description
       t.integer :limit
-      t.integer :fund_donation_count, null: false, default: 0
+      t.integer :fund_donations_count, null: false, default: 0
 
       t.timestamps
     end

@@ -10,4 +10,6 @@ CivicSourcing.Petition = CivicSourcing.Amorphous.extend(
   deliveryDate: DS.attr()
   goal: DS.attr()
   petitionSignaturesCount: DS.attr()
+  slug: DS.attr()
+  featured: DS.attr()
 )

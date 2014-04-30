@@ -2,7 +2,7 @@ class InitiativeSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :name, :slug, :description, :membership_id,
-    :membership_request_id
+    :membership_request_id, :featured
 
   has_one :community, serializer: CommunitySerializer
   has_one :workroom, serializer: WorkroomSerializer
@@ -10,7 +10,7 @@ class InitiativeSerializer < ActiveModel::Serializer
   has_one :fund, serializer: FundSerializer
 
   def membership_id
-    scope.memberships.where(group: object).pluck(:id).first
+    scope.memberships.where(group: object).pluck(:id).first if scope
   end
 
   def membership_request_id

@@ -14,4 +14,6 @@ CivicSourcing.Fund = CivicSourcing.Amorphous.extend(
   body: DS.attr()
   title: DS.attr()
   totalDonations: DS.attr()
+  slug: DS.attr()
+  featured: DS.attr()
 )

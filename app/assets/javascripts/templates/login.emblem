@@ -18,7 +18,3 @@
 
     .mt
       button.btn.btn-form.va-bottom click="authenticate" Login
-
-      Ember.Checkbox id="remember_me" checkedBinding="remember_me"
-      label.css-label.ml-s.no-transition for="remember_me"
-        | remember me

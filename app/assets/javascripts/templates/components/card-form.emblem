@@ -10,22 +10,42 @@ form submit="submitCard"
     li
       label for="card-name"
         | Name on Card:
-      Ember.TextField id="card-name" autocomplete=off
+      Ember.TextField id="card-name" autocomplete="off"
 
     li
       label for="card-number"
         | Card Number:
-      Ember.TextField id="card-number" autocomplete=off maxlength="16"
+      Ember.TextField id="card-number" autocomplete="off" maxlength="16"
 
     li
       label for="card-expiration"
         | Expiration:
-      Ember.TextField id="card-ex-month" autocomplete=off maxlength="2"
-      Ember.TextField id="card-ex-year" autocomplete=off maxlength="4"
+      Ember.TextField id="card-ex-month" autocomplete="off" maxlength="2"
+      Ember.TextField id="card-ex-year" autocomplete="off" maxlength="4"
 
     li
       label for="card-cvv"
         | Security Code (CVV):
-      Ember.TextField id="card-cvv" autocomplete=off maxlength="4"
+      Ember.TextField id="card-cvv" autocomplete="off" maxlength="4"
+
+    li
+      label for="card-line1"
+        | Billing Address:
+      Ember.TextField id="card-line1" autocomplete="off"
+
+    li
+      label for="card-postal-code"
+        | Billing Postal Code:
+      Ember.TextField id="card-postal-code" autocomplete="off"
+
+    li
+      label for="card-dob-month"
+        | Date of Birth (Month):
+      Ember.TextField id="card-dob-month" autocomplete="off"
+
+    li
+      label for="card-dob-year"
+        | Date of Birth (Year):
+      Ember.TextField id="card-dob-year" autocomplete="off"
 
   button.btn.btn-form.mt click="submitCard" Submit

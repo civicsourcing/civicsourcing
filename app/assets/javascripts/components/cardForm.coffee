@@ -8,6 +8,10 @@ CivicSourcing.CardFormComponent = Ember.Component.extend(
       fundingInstrument = (if response.cards? then response.cards[0] else response.bank_accounts[0])
       jQuery.post "/api/v1/cards",
         uri: fundingInstrument.href
+        dob_month: $("#card-dob-month").val()
+        dob_year: $("#card-dob-year").val()
+        postal_code: $("#card-postal-code").val()
+        name: $("#card-name").val()
       , (r) ->
         if r != null && r.errors
           _this.set("errors", r.errors)
@@ -26,7 +30,10 @@ CivicSourcing.CardFormComponent = Ember.Component.extend(
         number: $("#card-number").val()
         expiration_month: $("#card-ex-month").val()
         expiration_year: $("#card-ex-year").val()
-        security_code: $("#card-cvv").val()
+        cvv: $("#card-cvv").val()
+        address:
+          line1: $("#card-line1").val()
+          postal_code: $("#card-postal-code").val()
 
       balanced.card.create payload, @handleResponse
 )

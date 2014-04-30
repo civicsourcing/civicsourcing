@@ -5,7 +5,8 @@ CivicSourcing.DonationFormComponent = Ember.Component.extend(
   ).property('fund.fundDonationId')
 
   currentUserHasCard: (->
-    @get('session.currentUserHasCard')
+    hasCard = @get("session.currentUserHasCard")
+    hasCard == true || hasCard == "true"
   ).property('session.currentUserHasCard')
 
   userIsDonating: false

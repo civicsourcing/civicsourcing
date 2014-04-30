@@ -24,7 +24,7 @@ class QueryParams
   end
 
   def filtered_params
-    params.except(:page, :per_page, :action, :controller, :format)
+    params.except(:page, :per_page, :action, :controller, :format, :order, :limit)
   end
 
   def query_operator(param)

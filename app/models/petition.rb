@@ -1,5 +1,10 @@
 class Petition < ActiveRecord::Base
+  include Feature
+  
   attr_accessor :creator
+
+  extend FriendlyId
+  friendly_id :title, use: :history
 
   acts_as_eventable add_to_feeds: :custom_feeds, created_by: :creator,
     is_parent: { permitted_children: [Comment] }

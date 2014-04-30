@@ -4,7 +4,10 @@ module Api
       # GET /communities
       # GET /communities.json
       def index
-        @communities = Community.where(QueryParams.new(Community, params).build)
+        order = params[:order] || "score DESC"
+        limit = params[:limit] || "10"
+        @communities = Community.where(QueryParams.new(Community, params).build).
+          order(order).limit(limit)
 
         render json: @communities, each_serializer: CommunitySerializer
       end

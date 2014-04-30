@@ -1,5 +1,10 @@
 CivicSourcing.InitiativeFundController = Ember.ObjectController.extend(
 
+  currentUserHasBank: (->
+    hasBank = @get("session.currentUserHasBank")
+    hasBank == true || hasBank == "true"
+  ).property("session.currentUserHasBank")
+
   actions:
     submit: (event, view) ->
       @get('model').save().then(((response) =>

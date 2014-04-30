@@ -16,11 +16,11 @@ Ember.Application.initializer
         @set('content.card_registered', value)
       currentUserHasCard: (->
         @get('content.card_registered')
-      ).property('content')
+      ).property('content.card_registered')
       setBank: (value) ->
         @set('content.bank_registered', value)
       currentUserHasBank: (->
         @get('content.bank_registered')
-      ).property('content')
+      ).property('content.bank_registered')
 
     container.injection("component", 'session', 'session:main')

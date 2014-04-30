@@ -11,25 +11,37 @@ CivicSourcing::Application.routes.draw do
     end
   end
 
+  concern :featureable do
+    member do
+      resources :features
+    end
+  end
+
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       resources :badges, constraints: FormatTest.new(:json)
-      resources :banks, constraints: FormatTest.new(:json)
-      resources :cards, constraints: FormatTest.new(:json)
+      #resources :banks, constraints: FormatTest.new(:json)
+      #resources :cards, constraints: FormatTest.new(:json)
       resources :comments, constraints: FormatTest.new(:json)
       resources :communities, constraints: FormatTest.new(:json)
       resources :community_categories, constraints: FormatTest.new(:json)
       resources :events, constraints: FormatTest.new(:json)
       resources :feeds, constraints: FormatTest.new(:json)
-      resources :funds, constraints: FormatTest.new(:json)
-      resources :fund_donations, constraints: FormatTest.new(:json)
-      resources :fund_rewards, constraints: FormatTest.new(:json)
-      resources :initiatives, constraints: FormatTest.new(:json)
+      #resources :funds, constraints: FormatTest.new(:json), module: "funds" do
+        # concerns :featureable
+      # end
+      #resources :fund_donations, constraints: FormatTest.new(:json)
+      #resources :fund_rewards, constraints: FormatTest.new(:json)
+      resources :initiatives, constraints: FormatTest.new(:json), module: "initiatives" do
+        concerns :featureable
+      end
       resources :memberships, constraints: FormatTest.new(:json)
       resources :membership_requests, constraints: FormatTest.new(:json)
       resources :membership_request_responses, constraints: FormatTest.new(:json)
       resources :tasks, constraints: FormatTest.new(:json)
-      resources :petitions, constraints: FormatTest.new(:json)
+      resources :petitions, constraints: FormatTest.new(:json), module: "petitions" do
+        concerns :featureable
+      end
       resources :petition_signatures, constraints: FormatTest.new(:json)
       resources :petition_deliveries, constraints: FormatTest.new(:json)
       resources :posts, constraints: FormatTest.new(:json)

@@ -11,10 +11,18 @@
       else
         button.btn.positive-background click="requestMembership"
           | Request Membership
+    if session.currentUser.admin
+      span.ml
+        if featured
+          button.btn.negative-background click="feature"
+            | Defeature
+        else
+          button.btn.positive-background click="feature"
+            | Feature
   link-to "dashboard.communities.community" community
     .epsilon.mb
       span.mr-t An initiative of #{ community.name }
-  p.me-s == description
+  p.me-s = description
 
   if userIsMember
     ul.nav.nav--active-blue.mt
@@ -27,9 +35,6 @@
       li.b.p.pe-s
         link-to 'initiative.petition' this
           | Petition
-      li.b.p.pe-s
-        link-to 'initiative.fund' this
-          | Fund
 
     .flag.flag--top.mt
       .flag__img

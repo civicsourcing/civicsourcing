@@ -23,6 +23,7 @@ CivicSourcing.Router.map ()->
     @resource 'initiative.event', path: 'event'
     @resource 'initiative.petition', path: 'petition'
     @resource 'initiative.fund', path: 'fund'
+  @resource 'petition', path: 'petition/:petition_id'
   @resource 'admin', ->
     @resource 'admin.community-categories', path: 'community-categories', ->
       @route 'new'

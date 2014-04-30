@@ -12,7 +12,7 @@ module Api
       # GET /petitions/1
       # GET /petitions/1.json
       def show
-        @petition = Petition.find(params[:id])
+        @petition = Petition.friendly.find(params[:id])
 
         render json: @petition
       end
@@ -33,7 +33,7 @@ module Api
       # PATCH/PUT /petitions/1
       # PATCH/PUT /petitions/1.json
       def update
-        @petition = Petition.find(params[:id])
+        @petition = Petition.friendly.find(params[:id])
 
         authorize! :manage, @petition
         if @petition.update(petition_params)
@@ -46,7 +46,7 @@ module Api
       # DELETE /petitions/1
       # DELETE /petitions/1.json
       def destroy
-        @petition = Petition.find(params[:id])
+        @petition = Petition.friendly.find(params[:id])
 
         authorize! :manage, @petition
         

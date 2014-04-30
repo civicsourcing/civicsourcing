@@ -2,7 +2,7 @@ class PetitionSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :title, :body, :goal, :delivery_date, :deliver_to,
-    :petition_signatures_count, :petition_signature_id
+    :petition_signatures_count, :petition_signature_id, :slug, :featured
 
   has_one :initiative, serializer: InitiativeSerializer
 

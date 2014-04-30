@@ -1,0 +1,7 @@
+.inline-numbering
+  list-style-type: none
+  counter-reset: ol-counter
+
+.inline-numbering__item:before
+  content: counter(ol-counter) ". "
+  counter-increment: ol-counter

@@ -12,6 +12,14 @@ else
     else
       button.btn.positive-background click="sign"
         | Sign
+    if session.currentUser.admin
+      span.ml
+        if featured
+          button.btn.negative-background click="feature"
+            | Defeature
+        else
+          button.btn.positive-background click="feature"
+            | Feature
 
   .delta.mb-s
     | To be delivered to #{ deliverTo } after #{ deliveryCondition }.

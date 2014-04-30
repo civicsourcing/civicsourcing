@@ -27,6 +27,27 @@ class Community < ActiveRecord::Base
     [creator.feed, feed]
   end
 
+  def self.calculate_scores
+    Community.all.each do |community|
+      community.update_score
+    end
+  end
+
+  def update_score
+    score = 0
+    members.each{ |member| score += member.points }
+    update_column(:score, score)
+  end
+
+  def overall_rank
+    Community.all.order("score DESC").index(self) + 1
+  end
+
+  def category_rank
+    Community.where(community_category: community_category).order("score DESC").
+      index(self) + 1
+  end
+
   private
   def badge_qualifications
     [

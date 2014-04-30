@@ -1,4 +1,6 @@
 class Initiative < ActiveRecord::Base
+  include Feature
+  
   attr_accessor :creator
 
   extend FriendlyId
