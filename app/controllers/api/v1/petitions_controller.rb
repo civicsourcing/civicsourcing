@@ -55,6 +55,12 @@ module Api
         head :no_content
       end
 
+      def feature
+        authorize! :set_feature, Petition
+        @initiative = Petition.find(params[:id])
+        @initiative.feature
+      end
+
       private
       def petition_params
         params.require(:petition).permit(:title, :body, :goal, :delivery_date,

@@ -55,6 +55,12 @@ module Api
         head :no_content
       end
 
+      def feature
+        authorize! :set_feature, Fund
+        @initiative = Fund.find(params[:id])
+        @initiative.feature
+      end
+
       private
       def fund_params
         params["fund"]["fund_rewards_attributes"] = params["fund"].delete "fund_rewards"

@@ -11,7 +11,7 @@ CivicSourcing.InitiativeController = Ember.ObjectController.extend(
 
   actions:
     feature: ->
-      jQuery.post "/api/v1/initiatives/#{ @get("id") }/features"
+      jQuery.post "/api/v1/initiatives/#{ @get("id") }/feature"
       , (r) =>
         if !r.errors
           if @get("featured")

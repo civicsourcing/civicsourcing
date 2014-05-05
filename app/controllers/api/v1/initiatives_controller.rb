@@ -55,6 +55,12 @@ module Api
         head :no_content
       end
 
+      def feature
+        authorize! :set_feature, Initiative
+        @initiative = Initiative.find(params[:id])
+        @initiative.feature
+      end
+
       private
       def initiative_params
         params.require(:initiative).permit(:name, :description, :community_id).

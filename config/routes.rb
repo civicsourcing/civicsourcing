@@ -13,7 +13,7 @@ CivicSourcing::Application.routes.draw do
 
   concern :featureable do
     member do
-      resources :features
+      post :feature
     end
   end
 
@@ -27,19 +27,19 @@ CivicSourcing::Application.routes.draw do
       resources :community_categories, constraints: FormatTest.new(:json)
       resources :events, constraints: FormatTest.new(:json)
       resources :feeds, constraints: FormatTest.new(:json)
-      #resources :funds, constraints: FormatTest.new(:json), module: "funds" do
+      #resources :funds, constraints: FormatTest.new(:json) do
         # concerns :featureable
       # end
       #resources :fund_donations, constraints: FormatTest.new(:json)
       #resources :fund_rewards, constraints: FormatTest.new(:json)
-      resources :initiatives, constraints: FormatTest.new(:json), module: "initiatives" do
+      resources :initiatives, constraints: FormatTest.new(:json) do
         concerns :featureable
       end
       resources :memberships, constraints: FormatTest.new(:json)
       resources :membership_requests, constraints: FormatTest.new(:json)
       resources :membership_request_responses, constraints: FormatTest.new(:json)
       resources :tasks, constraints: FormatTest.new(:json)
-      resources :petitions, constraints: FormatTest.new(:json), module: "petitions" do
+      resources :petitions, constraints: FormatTest.new(:json) do
         concerns :featureable
       end
       resources :petition_signatures, constraints: FormatTest.new(:json)

@@ -35,7 +35,7 @@ CivicSourcing.PetitionSigningMixin = Ember.Mixin.create(
       )
 
     feature: ->
-      jQuery.post "/api/v1/petitions/#{ @get("id") }/features"
+      jQuery.post "/api/v1/petitions/#{ @get("id") }/feature"
       , (r) =>
         if !r.errors
           if @get("featured")
