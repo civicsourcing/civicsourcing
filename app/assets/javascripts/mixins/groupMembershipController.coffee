@@ -1,13 +1,17 @@
 CivicSourcing.GroupMembershipControllerMixin = Ember.Mixin.create(
 
+  userIsOfficer: false
+
+  setOfficer: (->
+    membershipId = @get('membershipId')
+    if membershipId
+      @store.find('membership', membershipId).then((rec) =>
+        @set('userIsOfficer', rec.get('officer'))
+      )
+  ).observes('membershipId')
+
   userIsMember: (->
     @get('membershipId')?
-  ).property('membershipId')
-
-  userIsOfficer: (->
-    @store.find('membership', @get('membershipId')).then((rec) ->
-      rec.get('officer')
-    )
   ).property('membershipId')
 
   userHasRequestedMembership: (->

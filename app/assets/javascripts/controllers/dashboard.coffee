@@ -8,6 +8,6 @@ CivicSourcing.DashboardController = Ember.ObjectController.extend(
       member_type: "User"
       member_id: @session.get('content.user_id')
       group_type: "Community"
-  ).property("session.currentUser")
+  ).property("session.currentUser", "session.currentUser.memberships")
 
 )
