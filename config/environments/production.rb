@@ -9,7 +9,6 @@ CivicSourcing::Application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-  config.consider_all_requests_local = false
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -80,9 +79,9 @@ CivicSourcing::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   CivicSourcing::Application.config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "[CivicSourcing] ",
-    :sender_address => %{"notifier" <notifier@civicsourcing.com>},
-    :exception_recipients => %w{timothythehuman@gmail.com}
+    :email => {
+      :email_prefix => "[CivicSourcing] ",
+      :sender_address => %{"notifier" <notifier@civicsourcing.com>},
+      :exception_recipients => %w{timothythehuman@gmail.com}
   }
 end
