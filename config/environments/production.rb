@@ -81,7 +81,7 @@ CivicSourcing::Application.configure do
   CivicSourcing::Application.config.middleware.use ExceptionNotification::Rack,
   :email => {
     :email_prefix => "[CivicSourcing] ",
-    :sender_address => %{"notifier" <notifier@civicsourcin.com>},
+    :sender_address => %{"notifier" <notifier@civicsourcing.com>},
     :exception_recipients => %w{timothythehuman@gmail.com}
   }
 end
