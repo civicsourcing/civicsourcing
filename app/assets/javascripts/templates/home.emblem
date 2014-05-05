@@ -21,8 +21,8 @@ section.ml-l.ib.va-top
 span.ml.list-item-home
   if featuredPetition
     h1.gamma.agency-font.mb-t Featured Petition
-    link-to 'petition' featuredPetition
-      section.b.p
+    section.b.p
+      link-to 'petition' featuredPetition
         h2.gamma = featuredPetition.title
         img src=featuredPetition.initiative.community.logoUrl
-        .list-item-home__body = formatMarkdown featuredPetition.body
+      .list-item-home__body = formatMarkdown featuredPetition.body

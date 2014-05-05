@@ -15,15 +15,18 @@ CivicSourcing.Router.map ()->
       @resource 'dashboard.initiatives.initiative', path: ':initiative_id'
     @resource 'dashboard.communities', path: 'communities', ->
       @route 'new'
-      @resource 'dashboard.communities.community', path: ':community_id'
+      @resource 'dashboard.communities.community', path: ':community_id', ->
+        @route 'edit'
     @resource 'dashboard.reputation', path: 'reputation'
   @resource 'initiative', path: 'initiative/:initiative_id', ->
+    @route 'edit'
     @resource 'initiative.feed', path: 'feed'
     @resource 'initiative.task', path: 'task'
     @resource 'initiative.event', path: 'event'
     @resource 'initiative.petition', path: 'petition'
     @resource 'initiative.fund', path: 'fund'
-  @resource 'petition', path: 'petition/:petition_id'
+  @resource 'petition', path: 'petition/:petition_id', ->
+    @route 'edit'
   @resource 'admin', ->
     @resource 'admin.community-categories', path: 'community-categories', ->
       @route 'new'

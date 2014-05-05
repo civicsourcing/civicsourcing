@@ -5,6 +5,8 @@
       if userIsMember
         a click="leave"
           | Leave Community
+        if userIsOfficer
+          link-to 'dashboard.communities.community.edit' this classNames="ml-s" | Edit
       else
         if private
           if userHasRequestedMembership
@@ -18,5 +20,6 @@
             | Join Community
   .flag__body
     h1.mb.ib.mr.va-top == name
+== outlet
 if userCanView
   feed-forum feed=feed

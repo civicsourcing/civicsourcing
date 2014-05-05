@@ -1,6 +1,8 @@
 section.column-center
   h1.ib = title
   span.va-top.ml.mb
+    if userIsOfficer
+      link-to 'petition.edit' this classNames="mr-s" | Edit
     if userHasSigned
       button.btn.negative-background click="unsign"
         | Unsign
@@ -18,5 +20,7 @@ section.column-center
 
   .delta.mb-s
     | To be delivered to #{ deliverTo } after #{ deliveryCondition }.
+
+  == outlet
 
   = formatMarkdown body

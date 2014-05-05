@@ -2,6 +2,8 @@
   h1.agency-font.ib == name
   .ib.va-top.ml
     if userIsMember
+      if userIsOfficer
+        link-to 'initiative.edit' this classNames="mr-s" | Edit
       button.btn.negative-background click="leave"
         | Resign from Initiative
     else
@@ -45,6 +47,8 @@
             ol.ml
               each task in tasks
                 task-item task=task
+            link-to 'initiative.task' this
+              | New Task
 
       .flag__body
         .column-center-alt

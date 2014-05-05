@@ -6,6 +6,8 @@ if isNew
 else
   h1.ib = title
   span.va-top.ml.mb
+    if userIsOfficer
+      link-to 'petition.edit' this classNames="mr-s" | Edit
     if userHasSigned
       button.btn.negative-background click="unsign"
         | Unsign
@@ -20,6 +22,8 @@ else
         else
           button.btn.positive-background click="feature"
             | Feature
+
+  == outlet
 
   .delta.mb-s
     | To be delivered to #{ deliverTo } after #{ deliveryCondition }.

@@ -5,3 +5,4 @@ CivicSourcing.Membership = DS.Model.extend
     polymorphic: true
 
   createdAt: DS.attr()
+  officer: DS.attr()
