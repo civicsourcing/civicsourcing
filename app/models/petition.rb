@@ -28,6 +28,14 @@ class Petition < ActiveRecord::Base
 
   after_save :check_if_goal_is_met
 
+  scope :undelivered, -> { where(delivered: false) }
+
+  def self.deliver_petitions
+    Petition.undelivered.each do |petition|
+      petition.deliver if DateTime.now > petition.delivery_date
+    end
+  end
+
   def custom_feeds
     [creator.feed, initiative.feed]
   end

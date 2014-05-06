@@ -58,6 +58,8 @@ gem "ember-source"
 gem "emblem-rails"
 gem "handlebars-source"
 
+gem 'whenever', :require => false
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
