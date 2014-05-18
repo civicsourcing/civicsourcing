@@ -9,11 +9,14 @@ class CreatePetitions < ActiveRecord::Migration
       t.string :deliver_to
       t.integer :petition_signatures_count, null: false, default: 0
       t.boolean :delivered, null: false, default: false
+      
+      t.integer :user_id
 
       t.timestamps
     end
     add_index :petitions, :initiative_id
     add_index :petitions, :delivery_date
     add_index :petitions, :delivered
+    add_index :petitions, :user_id
   end
 end

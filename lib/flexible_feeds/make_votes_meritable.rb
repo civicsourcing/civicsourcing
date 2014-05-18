@@ -2,8 +2,17 @@ require_dependency "lib/merit/badge_granter"
 require_dependency FlexibleFeeds::Engine.root.join('app', 'models', 'flexible_feeds', 'vote').to_s
 
 FlexibleFeeds::Vote.class_eval do
-  after_create :add_badges
-  after_destroy :remove_badges
+  after_create :add_badges, :add_points
+  after_destroy :remove_badges, :subtract_points
+
+  def feed
+    event_feed = event.ancestor || event
+    event_feed.feeds.find_by(feedable_type: "Community")
+  end
+
+  def community
+    feed.feedable.community
+  end
 
   private
   def badge_qualifications
@@ -27,5 +36,15 @@ FlexibleFeeds::Vote.class_eval do
   def badge_granter
     BadgeGranter.new(user: voter, count: voter.votes.count,
       qualifications: badge_qualifications)
+  end
+
+  def add_points
+    voter.add_points(1, category: 'Vote')
+    community.add_points(1) if community.present?
+  end
+
+  def subtract_points
+    voter.subtract_points(1, category: 'Vote')
+    community.subtract_points(1) if community.present?
   end
 end

@@ -1,5 +1,6 @@
 CivicSourcing.Petition = CivicSourcing.Amorphous.extend(
 
+  user: DS.belongsTo "user"
   initiative: DS.belongsTo "initiative"
 
   petitionSignatureId: DS.attr()

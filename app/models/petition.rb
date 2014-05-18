@@ -1,14 +1,13 @@
 class Petition < ActiveRecord::Base
   include Feature
-  
-  attr_accessor :creator
 
   extend FriendlyId
   friendly_id :title, use: :history
 
-  acts_as_eventable add_to_feeds: :custom_feeds, created_by: :creator,
+  acts_as_eventable add_to_feeds: :custom_feeds,
     is_parent: { permitted_children: [Comment] }
 
+  belongs_to :user
   belongs_to :initiative
   has_one :petition_delivery
   has_many :petition_signatures
@@ -27,8 +26,14 @@ class Petition < ActiveRecord::Base
   validate :has_an_end_condition
 
   after_save :check_if_goal_is_met
+  after_create :add_points
+  after_destroy :subtract_points
 
   scope :undelivered, -> { where(delivered: false) }
+
+  def community
+    initiative.community
+  end
 
   def self.deliver_petitions
     Petition.undelivered.each do |petition|
@@ -37,7 +42,7 @@ class Petition < ActiveRecord::Base
   end
 
   def custom_feeds
-    [creator.feed, initiative.feed]
+    [user.feed, initiative.feed]
   end
 
   def deliver
@@ -55,5 +60,15 @@ class Petition < ActiveRecord::Base
 
   def check_if_goal_is_met
     deliver if !delivered? && goal.present? && petition_signatures_count >= goal
+  end
+
+  def add_points
+    user.add_points(20, category: 'Petition')
+    community.add_points(20)
+  end
+
+  def subtract_points
+    user.subtract_points(20, category: 'Petition')
+    community.subtract_points(20)
   end
 end

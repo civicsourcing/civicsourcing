@@ -1,10 +1,37 @@
 section.event
-  div
-    .flag.flag--small
-      .flag__img
-        img src=event.creator.avatarThumbUrl
-      .flag__body
-        span = event.creator.username
-        span.ml Points #{ event.creator.points }
-  section
-    = formatMarkdown comment.body
+  if isEditing
+    form.mb
+
+      if errors.base
+        .error-block.error-block--base.mb
+          each error in errors.base
+            p = error
+
+      CivicSourcing.MarkdownEditor value=comment.body classNames="fw"
+
+      if errors.body
+        .error-block.error-block--base.mt-s
+          each error in errors.body
+            p = error
+
+      Ember.TextField type="hidden" value=comment.parentEvent
+
+      .mt-s
+      button.btn click="submitComment" Update
+      a.epsilon.ml click="cancelEdit"
+        | Cancel
+  else
+    div
+      .flag.flag--small
+        .flag__img
+          img src=user.avatarThumbUrl
+        .flag__body
+          span = user.username
+          span.ml Points #{ user.points }
+          if comment.canBeEdited
+            a.epsilon.ml click="editComment"
+              | Edit
+            a.epsilon.ml click="deleteComment"
+              | Delete
+    section
+      = formatMarkdown comment.body

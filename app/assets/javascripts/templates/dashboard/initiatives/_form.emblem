@@ -30,6 +30,9 @@ form
             p = error.message
 
     li
+      CivicSourcing.FileFieldView
+
+    li
       label for="description"
         | Description:
       Ember.TextArea value=description id="description"

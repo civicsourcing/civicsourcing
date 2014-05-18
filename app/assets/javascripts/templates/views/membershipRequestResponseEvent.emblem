@@ -1,2 +1,2 @@
 section.event
-  | #{ event.creator.username } #{ acceptance } #{ membershipRequestResponse.membershipRequest.member.username }'s membership.
+  | #{ user.username } #{ acceptance } #{ membershipRequestResponse.membershipRequest.member.username }'s membership.

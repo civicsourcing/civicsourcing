@@ -1,6 +1,6 @@
 class FundDonation < ActiveRecord::Base
 
-  acts_as_eventable add_to_feeds: :custom_feeds, created_by: :user,
+  acts_as_eventable add_to_feeds: :custom_feeds,
     is_parent: { permitted_children: [Comment] }
 
   belongs_to :fund

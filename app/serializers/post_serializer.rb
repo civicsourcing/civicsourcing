@@ -3,6 +3,7 @@ class PostSerializer < ActiveModel::Serializer
 
   attributes :id, :title, :body
 
+  has_one :user, serializer: UserSerializer
   has_one :event, serializer: EventSerializer
 
 end

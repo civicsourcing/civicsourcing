@@ -1,5 +1,5 @@
 if isTopLevel
-  span Created by #{ parentEvent.creator.username }
+  span Created by #{ parentEvent.eventable.user.username }
   a.ml click="toggleComments" classNames="epsilon"
     .small-icon.conversation-link-icon.mr-t
     | #{ parentEvent.childrenCount } Comments

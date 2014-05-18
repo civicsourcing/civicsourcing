@@ -64,7 +64,7 @@ module Api
       private
       def petition_params
         params.require(:petition).permit(:title, :body, :goal, :delivery_date,
-          :deliver_to, :initiative_id).merge(creator: current_user)
+          :deliver_to, :initiative_id).merge(user: current_user)
       end
     end
   end

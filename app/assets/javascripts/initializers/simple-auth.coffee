@@ -24,3 +24,4 @@ Ember.Application.initializer
       ).property('content.bank_registered')
 
     container.injection("component", 'session', 'session:main')
+    container.injection("view", 'session', 'session:main')

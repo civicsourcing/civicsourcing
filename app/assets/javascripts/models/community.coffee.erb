@@ -2,6 +2,7 @@ CivicSourcing.Community = CivicSourcing.Amorphous.extend(
   CivicSourcing.FeedableMixin
   CivicSourcing.GroupMixin
 
+  user: DS.belongsTo "user"
   initiatives: DS.hasMany "initiative",
     async: true
 

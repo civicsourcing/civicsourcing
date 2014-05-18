@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :history
 
-  devise :database_authenticatable, :lockable, :registerable, # :confirmable,
+  devise :database_authenticatable, :lockable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable 
 
   acts_as_member
@@ -15,18 +15,14 @@ class User < ActiveRecord::Base
 
   belongs_to :upload
 
-  has_many :events, as: :creator, class_name: "FlexibleFeeds::Event"
-  has_many :comments, through: :events, source: :eventable,
-    source_type: "Comment"
-  has_many :posts, through: :events, source: :eventable,
-    source_type: "Post"
-  has_many :founded_communities, through: :events, source: :eventable,
-    source_type: "Community"
-  has_many :founded_initiatives, through: :events, source: :eventable,
-    source_type: "Initiative"
+  has_many :comments
+  has_many :posts
+  has_many :founded_communities, class_name: "Community"
+  has_many :founded_initiatives, class_name: "Initiative"
 
   validates :username, presence: true, uniqueness: { case_sensitive: false },
     length: { in: 3..30 }
+  validates :email, uniqueness: { case_sensitive: false }
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
   validates :gender, presence: true, inclusion: { in: ["male", "female"] }
 
@@ -89,6 +85,8 @@ class User < ActiveRecord::Base
   end
 
   def add_welcome_badge
+    token = self.confirmation_token
     add_badge(0)
+    update_column(:confirmation_token, token)
   end
 end

@@ -73,9 +73,12 @@ ActiveRecord::Schema.define(version: 20140418162755) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "communities", force: true do |t|
     t.string   "name"
@@ -84,6 +87,7 @@ ActiveRecord::Schema.define(version: 20140418162755) do
     t.integer  "upload_id"
     t.integer  "completed_initiatives", default: 0,     null: false
     t.integer  "community_category_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "score",                 default: 0,     null: false
@@ -94,6 +98,7 @@ ActiveRecord::Schema.define(version: 20140418162755) do
   add_index "communities", ["private"], name: "index_communities_on_private", using: :btree
   add_index "communities", ["score"], name: "index_communities_on_score", using: :btree
   add_index "communities", ["slug"], name: "index_communities_on_slug", unique: true, using: :btree
+  add_index "communities", ["user_id"], name: "index_communities_on_user_id", using: :btree
 
   create_table "community_categories", force: true do |t|
     t.string   "name"
@@ -117,8 +122,6 @@ ActiveRecord::Schema.define(version: 20140418162755) do
   create_table "flexible_feeds_events", force: true do |t|
     t.string   "eventable_type"
     t.integer  "eventable_id"
-    t.integer  "creator_id"
-    t.string   "creator_type"
     t.integer  "parent_id"
     t.integer  "ancestor_id"
     t.integer  "children_count", default: 0,   null: false
@@ -134,7 +137,6 @@ ActiveRecord::Schema.define(version: 20140418162755) do
   add_index "flexible_feeds_events", ["ancestor_id"], name: "index_flexible_feeds_events_on_ancestor_id", using: :btree
   add_index "flexible_feeds_events", ["children_count"], name: "index_flexible_feeds_events_on_children_count", using: :btree
   add_index "flexible_feeds_events", ["controversy"], name: "index_flexible_feeds_events_on_controversy", using: :btree
-  add_index "flexible_feeds_events", ["creator_id", "creator_type"], name: "flexible_feeds_events_on_creator", using: :btree
   add_index "flexible_feeds_events", ["eventable_id", "eventable_type"], name: "flexible_feeds_events_on_eventable", using: :btree
   add_index "flexible_feeds_events", ["parent_id"], name: "index_flexible_feeds_events_on_parent_id", using: :btree
   add_index "flexible_feeds_events", ["popularity"], name: "index_flexible_feeds_events_on_popularity", using: :btree
@@ -237,6 +239,7 @@ ActiveRecord::Schema.define(version: 20140418162755) do
     t.string   "title"
     t.integer  "initiative_id"
     t.integer  "total_donations", default: 0,     null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "featured",        default: false, null: false
@@ -248,6 +251,7 @@ ActiveRecord::Schema.define(version: 20140418162755) do
   add_index "funds", ["featured"], name: "index_funds_on_featured", using: :btree
   add_index "funds", ["initiative_id"], name: "index_funds_on_initiative_id", using: :btree
   add_index "funds", ["slug"], name: "index_funds_on_slug", using: :btree
+  add_index "funds", ["user_id"], name: "index_funds_on_user_id", using: :btree
 
   create_table "initiatives", force: true do |t|
     t.string   "name"
@@ -255,6 +259,7 @@ ActiveRecord::Schema.define(version: 20140418162755) do
     t.text     "description"
     t.integer  "community_id"
     t.integer  "upload_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "featured",     default: false, null: false
@@ -263,14 +268,18 @@ ActiveRecord::Schema.define(version: 20140418162755) do
   add_index "initiatives", ["community_id"], name: "index_initiatives_on_community_id", using: :btree
   add_index "initiatives", ["featured"], name: "index_initiatives_on_featured", using: :btree
   add_index "initiatives", ["slug"], name: "index_initiatives_on_slug", unique: true, using: :btree
+  add_index "initiatives", ["user_id"], name: "index_initiatives_on_user_id", using: :btree
 
   create_table "membership_request_responses", force: true do |t|
     t.integer  "membership_request_id"
     t.boolean  "accepted",              default: false, null: false
     t.text     "notes"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "membership_request_responses", ["user_id"], name: "index_membership_request_responses_on_user_id", using: :btree
 
   create_table "merit_actions", force: true do |t|
     t.integer  "user_id"
@@ -320,7 +329,8 @@ ActiveRecord::Schema.define(version: 20140418162755) do
     t.datetime "updated_at"
   end
 
-  add_index "petition_signatures", ["user_id", "petition_id"], name: "index_petition_signatures_on_user_id_and_petition_id", unique: true, using: :btree
+  add_index "petition_signatures", ["petition_id"], name: "index_petition_signatures_on_petition_id", using: :btree
+  add_index "petition_signatures", ["user_id"], name: "index_petition_signatures_on_user_id", using: :btree
 
   create_table "petitions", force: true do |t|
     t.integer  "initiative_id"
@@ -331,6 +341,7 @@ ActiveRecord::Schema.define(version: 20140418162755) do
     t.string   "deliver_to"
     t.integer  "petition_signatures_count", default: 0,     null: false
     t.boolean  "delivered",                 default: false, null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "featured",                  default: false, null: false
@@ -342,13 +353,17 @@ ActiveRecord::Schema.define(version: 20140418162755) do
   add_index "petitions", ["featured"], name: "index_petitions_on_featured", using: :btree
   add_index "petitions", ["initiative_id"], name: "index_petitions_on_initiative_id", using: :btree
   add_index "petitions", ["slug"], name: "index_petitions_on_slug", using: :btree
+  add_index "petitions", ["user_id"], name: "index_petitions_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "sashes", force: true do |t|
     t.datetime "created_at"
@@ -359,10 +374,12 @@ ActiveRecord::Schema.define(version: 20140418162755) do
     t.integer  "workroom_id"
     t.string   "name"
     t.boolean  "completed",   default: false, null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
   add_index "tasks", ["workroom_id"], name: "index_tasks_on_workroom_id", using: :btree
 
   create_table "uploads", force: true do |t|

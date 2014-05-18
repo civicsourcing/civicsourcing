@@ -7,6 +7,7 @@ class CreatePetitionSignatures < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :petition_signatures, [:user_id, :petition_id], unique: true
+    add_index :petition_signatures, :user_id
+    add_index :petition_signatures, :petition_id
   end
 end

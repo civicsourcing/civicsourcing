@@ -63,8 +63,8 @@ module Api
 
       private
       def initiative_params
-        params.require(:initiative).permit(:name, :description, :community_id).
-          merge(creator: current_user)
+        params.require(:initiative).permit(:name, :description, :community_id, :upload_id).
+          merge(user: current_user)
       end
     end
   end

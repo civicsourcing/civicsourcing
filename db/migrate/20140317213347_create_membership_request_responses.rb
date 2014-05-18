@@ -4,8 +4,11 @@ class CreateMembershipRequestResponses < ActiveRecord::Migration
       t.integer :membership_request_id
       t.boolean :accepted, null: false, default: false
       t.text :notes
+      
+      t.integer :user_id
 
       t.timestamps
     end
+    add_index :membership_request_responses, :user_id
   end
 end

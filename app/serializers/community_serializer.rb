@@ -5,6 +5,7 @@ class CommunitySerializer < ActiveModel::Serializer
     :membership_id, :membership_request_id, :private, :overall_rank,
     :category_rank
 
+  has_one :user, serializer: UserSerializer
   has_one :upload, serializer: UploadSerializer
   has_one :feed, serializer: FeedSerializer
   has_one :community_category, serializer: CommunityCategorySerializer

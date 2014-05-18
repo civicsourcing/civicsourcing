@@ -60,7 +60,7 @@ module Api
       private
       def community_params
         params.require(:community).permit(:name, :private, :upload_id,
-          :community_category_id).merge(creator: current_user)
+          :community_category_id).merge(user: current_user)
       end
     end
   end

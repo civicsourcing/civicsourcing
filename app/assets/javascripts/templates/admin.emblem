@@ -1,6 +1,7 @@
-.p
-  ul.nav
-    li
-      link-to "admin.community-categories" | Community Categories
+section.column-center
+  p
+    ul.nav
+      li
+        link-to "admin.community-categories" | Community Categories
 
-  == outlet
+    == outlet

@@ -1,5 +1,6 @@
 CivicSourcing.Fund = CivicSourcing.Amorphous.extend(
 
+  user: DS.belongsTo "user"
   initiative: DS.belongsTo "initiative"
   fundRewards: DS.hasMany "fundReward",
     async: true

@@ -57,7 +57,7 @@ module Api
       private
       def post_params
         params.require(:post).permit(:title, :body, :feed_id).
-          merge(creator: current_user)
+          merge(user: current_user)
       end
     end
   end

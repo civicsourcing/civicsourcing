@@ -68,6 +68,8 @@ CivicSourcing.CommentControlsComponent = Em.Component.extend
         @set('newComment', null)
         @set('isCreatingComment', false)
         @get('parentEvent').reload()
+        if @get("isTopLevel")
+          @initializeComment()
       ),
       ((response) =>
         @set("errors", response.errors)

@@ -67,7 +67,7 @@ module Api
         params.require(:fund).permit(:goal, :stretch_goal, :end_date, :body,
           :title, :initiative_id, fund_rewards_attributes: [:_destroy, :id,
             :minimum_donation, :description, :limit] ).
-          merge(creator: current_user)
+          merge(user: current_user)
       end
     end
   end

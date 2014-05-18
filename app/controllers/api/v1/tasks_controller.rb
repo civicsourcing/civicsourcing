@@ -57,7 +57,7 @@ module Api
       private
       def task_params
         params.require(:task).permit(:name, :completed, :workroom_id).
-          merge(creator: current_user)
+          merge(user: current_user)
       end
     end
   end

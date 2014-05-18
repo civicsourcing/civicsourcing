@@ -7,10 +7,13 @@ class CreateInitiatives < ActiveRecord::Migration
       t.integer :community_id
 
       t.integer :upload_id
+      
+      t.integer :user_id
 
       t.timestamps
     end
     add_index :initiatives, :community_id
     add_index :initiatives, :slug,             :unique => true
+    add_index :initiatives, :user_id
   end
 end

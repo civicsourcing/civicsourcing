@@ -7,7 +7,6 @@ class EventSerializer < ActiveModel::Serializer
   has_many :children, serializer: EventSerializer
   has_many :feeds, serializer: FeedSerializer
   has_one :eventable, polymorphic: true
-  has_one :creator, polymorphic: true
   has_one :parent, serializer: EventSerializer
   has_one :ancestor, serializer: EventSerializer
 

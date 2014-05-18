@@ -1,14 +1,14 @@
 aside.leaderboard.column-left.fixed-aside
   h1.beta.mb-t.agency-font
     | Leaderboard
-  if memberships
+  if communities
     .b.b--no-b.p.pe-s
       | Community ranking by category:
-    each membership in memberships
-      if membership.group
-        link-to 'dashboard.communities.community' membership.group
+    each community in communities
+      if community
+        link-to 'dashboard.communities.community' community
           .b.p.pe-s.aside-background
-            | #{ membership.group.name }: #{ toOrdinal membership.group.categoryRank }
+            | #{ community.name }: #{ toOrdinal community.categoryRank }
   else
     .b.p.pe-s
       link-to 'dashboard.communities'

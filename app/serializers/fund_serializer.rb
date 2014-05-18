@@ -4,6 +4,7 @@ class FundSerializer < ActiveModel::Serializer
   attributes :id, :active, :goal, :stretch_goal, :end_date, :body, :title,
     :total_donations, :fund_donation_id, :slug, :featured
 
+  has_one :user, serializer: UserSerializer
   has_one :initiative, serializer: InitiativeSerializer
   has_many :fund_rewards, serializer: FundRewardSerializer
 

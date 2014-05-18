@@ -1,6 +1,4 @@
 CivicSourcing.Event = CivicSourcing.Amorphous.extend
-  creator: DS.belongsTo 'amorphous',
-    polymorphic: true
   eventable: DS.belongsTo 'amorphous',
     polymorphic: true, inverse: 'parentEvent'
   childEventable: DS.hasMany 'amorphous',

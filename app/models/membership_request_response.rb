@@ -1,10 +1,10 @@
 class MembershipRequestResponse < ActiveRecord::Base
-  attr_accessor :creator
 
-  acts_as_eventable created_by: :creator, is_child: true,
+  acts_as_eventable is_child: true,
     is_parent: { permitted_children: [Comment] }
 
   belongs_to :membership_request, class_name: "Adhocracy::MembershipRequest"
+  belongs_to :user
 
   validates :accepted, inclusion: { in: [true, false] }
   validates :membership_request, presence: true

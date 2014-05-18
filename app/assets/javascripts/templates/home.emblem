@@ -9,7 +9,7 @@ if featuredInitiative
         p = featuredInitiative.description
       .flag__img
         link-to 'initiative' featuredInitiative
-          img src=featuredInitiative.community.logoUrl width="300" height="200"
+          img src=featuredInitiative.logoUrl
 
 section.ml-l.ib.va-top
   h1.gamma.agency-font.mb-t Community Leaderboard

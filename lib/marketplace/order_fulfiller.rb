@@ -5,7 +5,7 @@ class OrderFulfiller
     @donation = donation
     @fund = donation.fund
     @donor = donation.user
-    @merchant = donation.fund.event.creator.customer
+    @merchant = donation.fund.user.customer
     @order = @merchant.create_order
   end
 

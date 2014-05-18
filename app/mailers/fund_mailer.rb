@@ -7,7 +7,7 @@ class FundMailer < ActionMailer::Base
 
   def funded(fund)
     @fund = fund
-    @user = fund.event.creator
+    @user = fund.user
     mail(subject: "'#{ @fund.title }' funded!", to: @user.email)
   end
 
@@ -19,7 +19,7 @@ class FundMailer < ActionMailer::Base
 
   def underfunded_manager(fund)
     @fund = fund
-    @user = fund.event.creator
+    @user = fund.user
     mail(subject: "'#{ @fund.title }' underfunded", to: @user.email)
   end
 

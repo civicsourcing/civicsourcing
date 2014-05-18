@@ -4,6 +4,8 @@ class InitiativeSerializer < ActiveModel::Serializer
   attributes :id, :name, :slug, :description, :membership_id,
     :membership_request_id, :featured
 
+  has_one :user, serializer: UserSerializer
+  has_one :upload, serializer: UploadSerializer
   has_one :community, serializer: CommunitySerializer
   has_one :workroom, serializer: WorkroomSerializer
   has_one :petition, serializer: PetitionSerializer

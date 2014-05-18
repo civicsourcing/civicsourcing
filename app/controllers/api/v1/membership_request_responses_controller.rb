@@ -37,7 +37,7 @@ module Api
       private
       def membership_request_response_params
         params.require(:membership_request_response).permit(:accepted,
-          :membership_request_id, :notes).merge(creator: current_user)
+          :membership_request_id, :notes).merge(user: current_user)
       end
     end
   end

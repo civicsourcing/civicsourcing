@@ -12,7 +12,7 @@ class Ability
 
     # Comment
     can :manage, Comment do |comment|
-      comment.event.creator == user
+      comment.user.id == user.id
     end
 
     # Community
@@ -67,7 +67,7 @@ class Ability
 
     # Post
     can :manage, Post do |post|
-      post.event.creator == user
+      post.user == user
     end
 
     # Task

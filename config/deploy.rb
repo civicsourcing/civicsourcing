@@ -6,6 +6,8 @@ set :deploy_user, 'deploy'
  
 set :scm, :git
 set :repo_url, 'https://github.com/civicsourcing/civicsourcing.git'
+
+set :linked_dirs, %w{public/uploads}
  
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }

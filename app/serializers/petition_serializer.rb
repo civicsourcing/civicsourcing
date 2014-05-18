@@ -4,6 +4,7 @@ class PetitionSerializer < ActiveModel::Serializer
   attributes :id, :title, :body, :goal, :delivery_date, :deliver_to,
     :petition_signatures_count, :petition_signature_id, :slug, :featured
 
+  has_one :user, serializer: UserSerializer
   has_one :initiative, serializer: InitiativeSerializer
 
   def petition_signature_id
