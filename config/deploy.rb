@@ -6,8 +6,6 @@ set :deploy_user, 'deploy'
  
 set :scm, :git
 set :repo_url, 'https://github.com/civicsourcing/civicsourcing.git'
-
-set :linked_dirs, %w{public/uploads}
  
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
@@ -20,7 +18,7 @@ set :rbenv_ruby, '2.0.0-p451'
  
  
 set :linked_files, %w{config/database.yml config/application.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
  
 namespace :deploy do
  
