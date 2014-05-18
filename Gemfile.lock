@@ -50,7 +50,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    adhocracy (0.3.1)
+    adhocracy (0.4)
       rails (~> 4.0)
     ambry (0.3.1)
     arel (5.0.1.20140414130214)
