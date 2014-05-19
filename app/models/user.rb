@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: { case_sensitive: false },
     length: { in: 3..30 }
-  validates :email, uniqueness: { case_sensitive: false }
   validates :slug, presence: true, uniqueness: { case_sensitive: false }
   validates :gender, presence: true, inclusion: { in: ["male", "female"] }
 

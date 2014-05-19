@@ -20,9 +20,7 @@ form
     li
       label for="communityCategory"
         | Category:
-      span.input-width
-        Ember.TextField type="hidden" valueBinding="communityCategory"
-        community-category-set-autocomplete
+      view Ember.Select content=categories optionValuePath="content" optionLabelPath="content.name" value=communityCategory prompt="Please select a category"
 
       if errors.communityCategory
         .error-block.mt-s

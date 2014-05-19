@@ -9,7 +9,6 @@ module Api
       def create
         @user = User.new(user_params)
         authorize! :create, @user
-        @user.save
         if @user.save
           render json: @user, location: api_v1_dashboard_path, status: :created
         else
