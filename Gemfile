@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'rails-api'
-gem 'i18n'
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-rails-console', :git => 'git://github.com/valgusk/capistrano-rails-console.git'
