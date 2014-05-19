@@ -384,6 +384,7 @@ DEPENDENCIES
   guard-rspec
   guard-sass
   handlebars-source
+  i18n
   jquery-fileupload-rails
   jquery-rails
   jquery-ui-sass-rails
