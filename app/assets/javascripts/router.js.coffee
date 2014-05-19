@@ -2,6 +2,7 @@
 
 CivicSourcing.Router.map ()->
   @route 'home', path: '/'
+  @route 'confirm'
   @route 'welcome'
   @route 'login'
   @route 'register'

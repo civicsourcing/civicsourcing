@@ -1,6 +1,6 @@
 CivicSourcing.RegisterController = Ember.ObjectController.extend(
   CivicSourcing.FormMixin,
-    transitionTo: 'dashboard.feed'
+    transitionTo: 'confirm'
     dynamicSegment: false
 
   genders: [
