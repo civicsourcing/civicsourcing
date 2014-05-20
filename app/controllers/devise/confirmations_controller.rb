@@ -22,7 +22,7 @@ class Devise::ConfirmationsController < DeviseController
     yield resource if block_given?
 
     if resource.errors.empty?
-      respond_with_navigational(resource){ redirect_to "/welcome" }
+      respond_with_navigational(resource){ redirect_to "/dashboard/feed" }
     else
       respond_with_navigational(resource.errors, status: :unprocessable_entity){ render :new }
     end
