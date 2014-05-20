@@ -3,4 +3,8 @@ class Workroom < ActiveRecord::Base
   has_many :tasks
 
   flexible_feeds
+
+  def community
+    initiative.community
+  end
 end

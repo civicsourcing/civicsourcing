@@ -13,7 +13,9 @@ class Comment < ActiveRecord::Base
 
   def feed
     event.ancestor.feeds.find_by(feedable_type: "Community") ||
-      FlexibleFeeds::Event.find(parent_event_id).feeds.find_by(feedable_type: "Community")
+      FlexibleFeeds::Event.find(parent_event_id).feeds.find_by(feedable_type: "Community") ||
+      event.ancestor.feeds.find_by(feedable_type: "Workroom") ||
+      FlexibleFeeds::Event.find(parent_event_id).feeds.find_by(feedable_type: "Workroom")
   end
 
   def community

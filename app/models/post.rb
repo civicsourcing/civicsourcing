@@ -16,7 +16,9 @@ class Post < ActiveRecord::Base
   end
 
   def feed
-    event.feeds.find_by(feedable_type: "Community") || FlexibleFeeds::Feed.find(feed_id)
+    event.feeds.find_by(feedable_type: "Community") ||
+      event.feeds.find_by(feedable_type: "Workroom") ||
+      FlexibleFeeds::Feed.find(feed_id)
   end
 
   def community

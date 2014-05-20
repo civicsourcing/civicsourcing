@@ -7,7 +7,8 @@ FlexibleFeeds::Vote.class_eval do
 
   def feed
     event_feed = event.ancestor || event
-    event_feed.feeds.find_by(feedable_type: "Community")
+    event_feed.feeds.find_by(feedable_type: "Community") ||
+      event_feed.feeds.find_by(feedable_type: "Workroom")
   end
 
   def community
