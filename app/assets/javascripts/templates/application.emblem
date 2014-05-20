@@ -55,7 +55,8 @@ footer.footer.fw
             li.light-text
               link-to 'static.about' classNames="link__light"
                 | About Us
-            li.light-text Blog
+            li.light-text
+              a.link__light href="http://civicsourcing.wordpress.com/" Blog
             li.light-text
               link-to 'static.contact' classNames="link__light"
                 | Contact Us
