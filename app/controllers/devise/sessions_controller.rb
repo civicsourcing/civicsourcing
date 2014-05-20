@@ -13,9 +13,10 @@ module Devise
 
     # POST /resource/sign_in
     def create
-      return missing_params unless params[:email] && params[:password]
+      return missing_params unless params[:email].present? && params[:password].present?
       resource = resource_from_credentials
       return invalid_credentials unless resource
+      return unconfirmed unless resource.confirmed?
       resource.ensure_authentication_token
       data = {
         user_id: resource.id,
@@ -48,6 +49,11 @@ module Devise
     def invalid_credentials
       warden.custom_failure!
       render json: {error: t("devise.failure.invalid")}, status: 401
+    end
+
+    def unconfirmed
+      warden.custom_failure!
+      render json: {error: t("devise.failure.unconfirmed")}, status: 401
     end
 
     def resource_from_auth_token
