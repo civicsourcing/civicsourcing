@@ -8,7 +8,7 @@
       li
         label for="username"
           | Username:
-        Ember.TextField valueBinding="username" id="username"
+        Ember.TextField valueBinding="username" id="username" autocomplete="off"
 
         if errors.username
           .error-block.mt-s
@@ -18,7 +18,7 @@
       li
         label for="email"
           | Email:
-        Ember.TextField valueBinding="email" id="email"
+        Ember.TextField valueBinding="email" id="email" autocomplete="off"
 
         if errors.email
           .error-block.mt-s
@@ -28,7 +28,7 @@
       li
         label for="password"
           | Password:
-        Ember.TextField valueBinding="password" type="password" id="password"
+        Ember.TextField valueBinding="password" type="password" id="password" autocomplete="off"
 
         if errors.password
           .error-block.mt-s
@@ -38,7 +38,7 @@
       li
         label for="password_confirmation"
           | Password Confirmation:
-        Ember.TextField valueBinding="passwordConfirmation" type="password" id="password_confirmation"
+        Ember.TextField valueBinding="passwordConfirmation" type="password" id="password_confirmation" autocomplete="off"
 
         if errors.passwordConfirmation
           .error-block.mt-s

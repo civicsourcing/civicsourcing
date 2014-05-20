@@ -9,12 +9,12 @@
       li
         label for="identification"
           | Email:
-        Ember.TextField id="identification" valueBinding="identification"
+        Ember.TextField id="identification" valueBinding="identification" autocomplete="off"
 
       li
         label for="password"
           | Password:
-        Ember.TextField id="password" valueBinding="password" type="password"
+        Ember.TextField id="password" valueBinding="password" type="password" autocomplete="off"
 
     .mt
       button.btn.btn-form.va-bottom click="authenticate" Login
