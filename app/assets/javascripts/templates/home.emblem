@@ -3,13 +3,12 @@ if featuredInitiative
     .bb.ps.pe-s
       link-to 'initiative' featuredInitiative
         h1.delta Spotlight Initiative
-    .p.flag--large.flag--top
+    .p.flag.flag--top
       .flag__body
         h2.gamma.pb-s.agency-font = featuredInitiative.name
         p = featuredInitiative.description
-      .flag__img
-        link-to 'initiative' featuredInitiative
-          img src=featuredInitiative.logoUrl
+      .flag__img.pl.pr0
+        img src=featuredInitiative.logoUrl
 
 section.ml-l.ib.va-top
   h1.gamma.agency-font.mb-t Community Leaderboard
